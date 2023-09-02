@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_02_111616) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_02_163246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,38 +20,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_111616) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cuisines_recipes", id: false, force: :cascade do |t|
-    t.bigint "cuisine_id", null: false
-    t.bigint "recipe_id", null: false
-    t.index ["cuisine_id", "recipe_id"], name: "index_cuisines_recipes_on_cuisine_id_and_recipe_id"
-    t.index ["recipe_id", "cuisine_id"], name: "index_cuisines_recipes_on_recipe_id_and_cuisine_id"
-  end
-
-  create_table "cuisines_users", id: false, force: :cascade do |t|
-    t.bigint "cuisine_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["cuisine_id", "user_id"], name: "index_cuisines_users_on_cuisine_id_and_user_id"
-    t.index ["user_id", "cuisine_id"], name: "index_cuisines_users_on_user_id_and_cuisine_id"
-  end
-
   create_table "dietaries", force: :cascade do |t|
     t.string "dietary_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "dietaries_recipes", id: false, force: :cascade do |t|
-    t.bigint "dietary_id", null: false
+  create_table "favourites", force: :cascade do |t|
     t.bigint "recipe_id", null: false
-    t.index ["dietary_id", "recipe_id"], name: "index_dietaries_recipes_on_dietary_id_and_recipe_id"
-    t.index ["recipe_id", "dietary_id"], name: "index_dietaries_recipes_on_recipe_id_and_dietary_id"
-  end
-
-  create_table "dietaries_users", id: false, force: :cascade do |t|
-    t.bigint "dietary_id", null: false
     t.bigint "user_id", null: false
-    t.index ["dietary_id", "user_id"], name: "index_dietaries_users_on_dietary_id_and_user_id"
-    t.index ["user_id", "dietary_id"], name: "index_dietaries_users_on_user_id_and_dietary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_favourites_on_recipe_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -60,18 +41,31 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_111616) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ingredients_recipes", id: false, force: :cascade do |t|
-    t.bigint "ingredient_id", null: false
+  create_table "recipe_cuisines", force: :cascade do |t|
     t.bigint "recipe_id", null: false
-    t.index ["ingredient_id", "recipe_id"], name: "index_ingredients_recipes_on_ingredient_id_and_recipe_id"
-    t.index ["recipe_id", "ingredient_id"], name: "index_ingredients_recipes_on_recipe_id_and_ingredient_id"
+    t.bigint "cuisine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuisine_id"], name: "index_recipe_cuisines_on_cuisine_id"
+    t.index ["recipe_id"], name: "index_recipe_cuisines_on_recipe_id"
   end
 
-  create_table "ingredients_users", id: false, force: :cascade do |t|
+  create_table "recipe_dietaries", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "dietary_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dietary_id"], name: "index_recipe_dietaries_on_dietary_id"
+    t.index ["recipe_id"], name: "index_recipe_dietaries_on_recipe_id"
+  end
+
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
     t.bigint "ingredient_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["ingredient_id", "user_id"], name: "index_ingredients_users_on_ingredient_id_and_user_id"
-    t.index ["user_id", "ingredient_id"], name: "index_ingredients_users_on_user_id_and_ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -79,6 +73,33 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_111616) do
     t.integer "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_cuisines", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "cuisine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuisine_id"], name: "index_user_cuisines_on_cuisine_id"
+    t.index ["user_id"], name: "index_user_cuisines_on_user_id"
+  end
+
+  create_table "user_dietaries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "dietary_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dietary_id"], name: "index_user_dietaries_on_dietary_id"
+    t.index ["user_id"], name: "index_user_dietaries_on_user_id"
+  end
+
+  create_table "user_ingredients", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ingredient_id"], name: "index_user_ingredients_on_ingredient_id"
+    t.index ["user_id"], name: "index_user_ingredients_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,4 +114,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_02_111616) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favourites", "recipes"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "recipe_cuisines", "cuisines"
+  add_foreign_key "recipe_cuisines", "recipes"
+  add_foreign_key "recipe_dietaries", "dietaries"
+  add_foreign_key "recipe_dietaries", "recipes"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "user_cuisines", "cuisines"
+  add_foreign_key "user_cuisines", "users"
+  add_foreign_key "user_dietaries", "dietaries"
+  add_foreign_key "user_dietaries", "users"
+  add_foreign_key "user_ingredients", "ingredients"
+  add_foreign_key "user_ingredients", "users"
 end
