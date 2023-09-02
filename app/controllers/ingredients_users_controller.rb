@@ -13,7 +13,7 @@ class IngredientsUsersController < ApplicationController
     @ingredient = Ingredient.new(ingredient_params)
     @ingredient.user = current_user
     if @ingredient.save
-      redirect_to hat_path(@ingredient)
+      redirect_to ingredient_path(@ingredient)
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class IngredientsUsersController < ApplicationController
   def update
     @ingredient = params[:ingredient]
     current_user.ingredient = @ingredient
-    redirect_to recipes_path, notice: "Ingredient preferences updated!"
+    redirect_to ingredients_path, notice: "Ingredient preferences updated!"
   end
 
   def destroy
