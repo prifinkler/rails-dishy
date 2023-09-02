@@ -1,4 +1,4 @@
-class DietariesUsersController < ApplicationController
+class UserDietariesController < ApplicationController
   before_action :set_dietary, only: %i[edit update destroy]
 
   def index
