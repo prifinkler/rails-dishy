@@ -2,7 +2,7 @@ class CuisinesUsersController < ApplicationController
   before_action :set_cuisine, only: %i[edit update destroy]
 
   def index
-    @cuisines = cuisine.all
+    @cuisines = Cuisine.all
   end
 
   def new
