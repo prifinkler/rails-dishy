@@ -6,14 +6,14 @@ class CuisinesUsersController < ApplicationController
   end
 
   def new
-    @cuisine = cuisine.new
+    @cuisine = Cuisine.new
   end
 
   def create
-    @cuisine = cuisine.new(cuisine_params)
+    @cuisine = Cuisine.new(cuisine_params)
     @cuisine.user = current_user
     if @cuisine.save
-      redirect_to hat_path(@cuisine)
+      redirect_to cuisine_path(@cuisine)
     else
       render :new, status: :unprocessable_entity
     end
