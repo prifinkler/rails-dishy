@@ -3,6 +3,11 @@ class UserRecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
+  # def index_favorites
+  #   @favorite_recipes = current_user.favorite_recipes
+  #   # Add logic to display the favorite recipes in the view
+  # end
+
   def search
     @search_results = Recipe.where("name ILIKE ?", "%#{params[:query]}%")
   end
@@ -13,18 +18,18 @@ class UserRecipesController < ApplicationController
 
   def favourite
     @recipe = Recipe.find(params[:id])
-      unless current_user.favourite.include?(@recipe)
+    if current_user.favourite.include?(@recipe)
+      flash[:notice] = "Recipe is already in your favorites"
+    else
       current_user.favourite << @recipe
       flash[:success] = "Recipe added to favorites"
-    else
-      flash[:notice] = "Recipe is already in your favorites"
     end
-      redirect_to @recipe
+    redirect_to @recipe
   end
 
-private
+  private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :portion, :time)
+    params.require(:recipe).permit(:name, :time)
   end
 end
