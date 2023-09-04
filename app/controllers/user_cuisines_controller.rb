@@ -42,7 +42,4 @@ class UserCuisinesController < ApplicationController
   def cuisine_params
     params.require(:cuisine).permit(:name)
   end
-
-end
-
 end
