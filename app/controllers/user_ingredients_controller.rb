@@ -28,10 +28,10 @@ class UserIngredientsController < ApplicationController
     redirect_to ingredients_path, notice: "Ingredient preferences updated!"
   end
 
-  def destroy
-    @ingredient.destroy
-    redirect_to ingredients_path, status: :see_other
-  end
+  # def destroy
+  #   @ingredient.destroy
+  #   redirect_to ingredients_path, status: :see_other
+  # end
 
   private
 

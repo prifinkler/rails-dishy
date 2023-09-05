@@ -5,19 +5,19 @@ class UserDietariesController < ApplicationController
     @dietarys = Dietary.all
   end
 
-  def new
-    @dietary = Dietary.new
-  end
+  # def new
+  #   @dietary = Dietary.new
+  # end
 
-  def create
-    @dietary = Dietary.new(dietary_params)
-    @dietary.user = current_user
-    if @dietary.save
-      redirect_to dietary_path(@dietary)
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @dietary = Dietary.new(dietary_params)
+  #   @dietary.user = current_user
+  #   if @dietary.save
+  #     redirect_to dietary_path(@dietary)
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
   def edit
   end
@@ -28,10 +28,10 @@ class UserDietariesController < ApplicationController
     redirect_to dietary_path, notice: "Dietary preferences updated!"
   end
 
-  def destroy
-    @dietary.destroy
-    redirect_to dietary_path, status: :see_other
-  end
+  # def destroy
+  #   @dietary.destroy
+  #   redirect_to dietary_path, status: :see_other
+  # end
 
   private
 
