@@ -1,15 +1,16 @@
 class UserRecipesController < ApplicationController
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe
+    .joins(:cuisine).where(cuisines:[current_user.cuisines])
+    .joins(:dietary).where(dietaries:[current_user.dietaries])
+    .joins(:ingredient).where(ingredients: [current_user.ingredients])
   end
 
-  # def index_favorites
-  #   @favorite_recipes = current_user.favorite_recipes
-  #   # Add logic to display the favorite recipes in the view
-  # end
-
   def search
-    @search_results = Recipe.where("name ILIKE ?", "%#{params[:query]}%")
+  @search_results = Recipe.where("name ILIKE ?", "%#{params[:query]}%")
+      .where(cuisine: params[:cuisine])
+      .where(dietary: params[:dietary])
+      .where(ingredients: {:ingredients})
   end
 
   def show

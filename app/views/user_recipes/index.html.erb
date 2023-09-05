@@ -1,0 +1,14 @@
+<h1>All Recipes</h1>
+
+<% @recipes.each do |recipe| %>
+  <div class="recipe-card">
+    <h2><%= recipe.name %></h2>
+    <p><%= recipe.ingredients %></p>
+    <p><%= recipe.instruction %></p>
+    <!-- Add a checkbox or button for selecting the recipe -->
+    <label>
+      <input type="checkbox" name="selected_recipes[]" value="<%= recipe.id %>">
+      Select
+    </label>
+  </div>
+<% end %>
