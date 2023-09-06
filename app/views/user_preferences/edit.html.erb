@@ -1,0 +1,14 @@
+<%= simple_form_for(@user, url: update_user_preferences_path, method: :patch) do |form| %>
+  <h2>Select Your Preferences</h2>
+
+  <h3>Cuisines</h3>
+  <%= form.collection_check_boxes(:cuisine_ids, Cuisine.all, :id, :name) %>
+
+  <h3>Ingredients</h3>
+  <%= form.collection_check_boxes(:ingredient_ids, Ingredient.all, :id, :name) %>
+
+  <h3>Dietary Restrictions</h3>
+  <%= form.collection_check_boxes(:dietary_ids, Dietary.all, :id, :dietary_type) %>
+
+  <%= form.submit "Save Preferences" %>
+<% end %>

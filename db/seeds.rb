@@ -7,9 +7,23 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Cleaning up database..."
+# RecipeIngredient.destroy_all
+
+RecipeDietary.destroy_all
+RecipeCuisine.destroy_all
 RecipeIngredient.destroy_all
 Recipe.destroy_all
+
+UserDietary.destroy_all
+UserCuisine.destroy_all
+UserIngredient.destroy_all
+User.destroy_all
+
+Dietary.destroy_all
+Cuisine.destroy_all
 Ingredient.destroy_all
+
+
 puts "Database cleaned"
 
 
@@ -71,7 +85,7 @@ ingredients = [
   { name: 'Garlic' },
   { name: 'Olive oil' },
   { name: 'Pepper' },
-  { name: 'Pasta' },
+  { name: 'Spaghetti' },
   { name: 'Rice' },
   { name: 'Beef' },
   { name: 'Lemon' },
@@ -103,7 +117,15 @@ ingredients = [
   { name: 'Mushroom' },
   { name: 'Celery' },
   { name: 'Lime' },
-  { name: 'Coconut milk' }
+  { name: 'Coconut milk' },
+  { name: 'Lettuce' },
+  { name: 'Sour cream' },
+  { name: 'Salsa' },
+  { name: 'Bacon' },
+  { name: 'Parmesan cheese' },
+  { name: 'Black pepper' },
+  { name: 'Tortilla' },
+  { name: 'Ground beef' }
 ]
 
 ingredients.each do |ingredient|
@@ -111,23 +133,43 @@ ingredients.each do |ingredient|
 end
 puts "Ingredients created!"
 
-recipes = [
-  { name: 'Recipe 1', time: 10 },
-  { name: 'Recipe 2', time: 20  },
-  { name: 'Recipe 3', time: 30 }
-]
-
-recipe1 = Recipe.create!(
+spaghetti_carbonara = Recipe.create!(
   name: 'Spaghetti Carbonara',
   time: 30
 )
 
-recipe2 = Recipe.create!(
+spaghetti_carbonara.ingredients << Ingredient.find_by(name: "Spaghetti")
+spaghetti_carbonara.ingredients << Ingredient.find_by(name: "Egg")
+spaghetti_carbonara.ingredients << Ingredient.find_by(name: "Bacon")
+spaghetti_carbonara.ingredients << Ingredient.find_by(name: "Parmesan cheese")
+spaghetti_carbonara.ingredients << Ingredient.find_by(name: "Black pepper")
+spaghetti_carbonara.ingredients << Ingredient.find_by(name: "Salt")
+
+spaghetti_carbonara.cuisines << Cuisine.find_by(name: "Italian")
+spaghetti_carbonara.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+
+tacos = Recipe.create!(
   name: 'Tacos',
   time: 45
 )
 
+tacos.ingredients << Ingredient.find_by(name: "Tortilla")
+tacos.ingredients << Ingredient.find_by(name: "Ground beef")
+tacos.ingredients << Ingredient.find_by(name: "Lettuce")
+tacos.ingredients << Ingredient.find_by(name: "Tomato")
+tacos.ingredients << Ingredient.find_by(name: "Cheese")
+tacos.ingredients << Ingredient.find_by(name: "Sour cream")
+tacos.ingredients << Ingredient.find_by(name: "Salsa")
+
+tacos.cuisines << Cuisine.find_by(name: "Mexican")
+tacos.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+
 puts "Recipes created!"
 
-RecipeIngredient.create!(recipe_id: Recipe.last.id, ingredient_id: Ingredient.last.id)
+User.create!(
+  email: 'user@gmail.com',
+  password: '123456'
+)
+
+# RecipeIngredient.create!(recipe_id: Recipe.last.id, ingredient_id: Ingredient.last.id)
 puts "done"

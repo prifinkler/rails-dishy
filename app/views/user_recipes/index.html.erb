@@ -4,7 +4,8 @@
   <div class="recipe-card">
     <h2><%= recipe.name %></h2>
     <p><%= recipe.ingredients %></p>
-    <p><%= recipe.instruction %></p>
+    <p><%= recipe.cuisines %></p>
+    <p><%= recipe.dietaries %></p>
     <!-- Add a checkbox or button for selecting the recipe -->
     <label>
       <input type="checkbox" name="selected_recipes[]" value="<%= recipe.id %>">
