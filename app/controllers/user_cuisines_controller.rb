@@ -32,13 +32,6 @@ class UserCuisinesController < ApplicationController
     redirect_to recipes_path, notice: "Cuisine preferences updated!"
   end
 
-  def destroy
-    # @cuisine.destroy
-    # redirect_to cuisines_path, status: :see_other
-    @user = User.find(params[:id])
-    @user.cuisine_preferences.delete(params[:cuisine_id])
-    redirect_to user_path(@user)
-  end
 
   private
 
