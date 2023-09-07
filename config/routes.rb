@@ -6,22 +6,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  # On the URL this will appear as /profile/cuisines, etc:
-  namespace :profile do
-    get 'cuisines', to: 'user_cuisines#index'
-    put 'cuisines', to: 'user_cuisines#update'
+  get 'user_preferences/edit', to: 'user_preferences#edit', as: 'edit_user_preferences'
+  patch 'user_preferences/update', to: 'user_preferences#update', as: 'update_user_preferences'
 
-    get 'dietaries', to: 'user_dietaries#index'
-    put 'dietaries', to: 'user_dietaries#update'
 
-    get 'ingredients', to: 'user_ingredients#index'
-    put 'ingredients', to: 'user_ingredients#update'
-  end
-
-  # Route to show the user's favourite recipes:
-  resources :user_recipes, only: [] do
-    get 'favorite_recipes', on: :collection, to: 'user_recipes#index_favorites'
-  end
+  # Route to show the user's recipes:
+  resources :user_recipes, only: %i[index edit update destroy]
 
   # Routes for favourite and search:
   resources :recipes, only: %i[index show] do
