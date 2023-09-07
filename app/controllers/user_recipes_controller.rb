@@ -2,19 +2,11 @@ class UserRecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # separate queries for each preference type and then combine the results
-    # cuisine_recipes = Recipe.joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
-    # dietary_recipes = Recipe.joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
-    # ingredient_recipes = Recipe.joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
-    # @recipes = cuisine_recipes & dietary_recipes & ingredient_recipes
-
-    # Distinct method ensures that the result contains unique recipes:
-    @recipes = Recipe.joins(:cuisines, :dietaries, :ingredients)
-    .where('cuisines.id IN (?) OR dietaries.id IN (?) OR ingredients.id IN (?)',
-      current_user.cuisine_ids,
-      current_user.dietary_ids,
-      current_user.ingredient_ids)
-    .distinct
+    @recipes = Recipe
+      .joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
+      .joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
+      .joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
+      .distinct
   end
 
   def search
