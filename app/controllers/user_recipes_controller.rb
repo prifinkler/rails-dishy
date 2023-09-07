@@ -2,6 +2,9 @@ class UserRecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    if current_user.cuisines.blank? && current_user.dietaries.blank? && current_user.ingredients.blank?
+      redirect_to edit_user_preferences_path
+    end
     @recipes = Recipe
       .joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
       .joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
