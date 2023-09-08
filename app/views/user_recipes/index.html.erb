@@ -9,6 +9,7 @@
     <!-- Add a checkbox or button for selecting the recipe -->
     <label>
       <input type="checkbox" name="selected_recipes[]" value="<%= recipe.id %>">
+      <%# <%= link_to 'Favourite', favourite_user_recipe_path(@recipe), method: :post %>  %>
       Select
     </label>
   </div>

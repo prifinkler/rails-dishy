@@ -6,8 +6,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get 'user_preferences/edit', to: 'user_preferences#edit', as: 'edit_user_preferences'
-  patch 'user_preferences/update', to: 'user_preferences#update', as: 'update_user_preferences'
+  # get 'user_preferences/edit', to: 'user_preferences#edit', as: 'edit_user_preferences'
+  # patch 'user_preferences/update', to: 'user_preferences#update', as: 'update_user_preferences'
+  get 'user_preferences/edit_cuisines', to: 'user_preferences#edit_cuisines', as: 'edit_user_cuisines'
+  patch 'user_preferences/update_cuisines', to: 'user_preferences#update_cuisines', as: 'update_user_cuisines'
+
+
+  get 'user_preferences/edit_ingredients', to: 'user_preferences#edit_ingredients', as: 'edit_user_ingredients'
+  patch 'user_preferences/update_ingredients', to: 'user_preferences#update_ingredients', as: 'update_user_ingredients'
+
+  get 'user_preferences/edit_dietaries', to: 'user_preferences#edit_dietaries', as: 'edit_user_dietaries'
+  patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietary'
 
 
   # Route to show the user's recipes:
@@ -16,7 +25,7 @@ Rails.application.routes.draw do
   # Routes for favourite and search:
   resources :recipes, only: %i[index show] do
     member do
-      post 'favorite', to: 'user_recipes#favorite'
+      post 'favourite', to: 'user_recipes#favourite'
     end
     collection do
       get 'search', to: 'user_recipes#search'
