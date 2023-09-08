@@ -5,11 +5,27 @@ class UserRecipesController < ApplicationController
     if current_user.cuisines.blank? && current_user.dietaries.blank? && current_user.ingredients.blank?
       redirect_to edit_user_preferences_path
     end
-    @recipes = Recipe
-      .joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
-      .joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
-      .joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
-      .distinct
+
+    # @recipes = Recipe
+    #   .joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
+    #   .joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
+    #   .joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
+    #   .distinct
+
+      def index
+        @recipes = Recipe.all
+        if current_user.cuisine_ids.any?
+            @recipes = @recipes.joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
+        end
+        if current_user.dietary_ids.any?
+            @recipes = @recipes.joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
+        end
+        if current_user.ingredient_ids.any?
+            @recipes = @recipes.joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
+        end
+        @recipes = @recipes.distinct
+    end
+    @recipes = Recipe.all
   end
 
   def search
@@ -25,12 +41,12 @@ class UserRecipesController < ApplicationController
   end
 
   def favourite
-    @recipe = Recipe.find(params[:id])
-    if current_user.favourite.include?(@recipe)
-      flash[:notice] = "Recipe is already in your favorites"
+    @user_recipe = UserRecipe.find(params[:id])
+      if current_user.favourite.include?(@recipe)
+        flash[:notice] = "Recipe is already in your favorites"
     else
-      current_user.favourite << @recipe
-      flash[:success] = "Recipe added to favorites"
+        current_user.favourite << @recipe
+        flash[:success] = "Recipe added to favorites"
     end
     redirect_to @recipe
   end
@@ -38,6 +54,6 @@ class UserRecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :time)
+    params.require(:recipe).permit(:name, :time, :instruction, :description)
   end
 end

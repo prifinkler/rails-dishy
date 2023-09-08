@@ -1,0 +1,7 @@
+
+<%= simple_form_for(@user, url: update_user_cuisines_path, method: :patch) do |form| %>
+  <h2>Select Your Cuisine Preferences</h2>
+  <%= form.collection_check_boxes(:cuisine_ids, Cuisine.all, :id, :name) %>
+  <%= form.submit "Save Cuisine Preferences" %>
+  <%= button_to "Skip", edit_user_ingredients_path, method: :get, class: "skip-button" %>
+<% end %>
