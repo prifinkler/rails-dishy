@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :user_recipes, only: %i[index edit update destroy]
 
   # Routes for favourite and search:
-  resources :recipes, only: %i[index show] do
+  resources :user_recipes, only: %i[index show] do
     member do
       post 'favourite', to: 'user_recipes#favourite'
     end

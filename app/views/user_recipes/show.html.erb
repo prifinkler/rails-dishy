@@ -1,0 +1,12 @@
+<div class="container py-4">
+  <%= render "shared/navbar" %>
+</div>
+<h3><%= @recipe.name</h3>
+
+<p><strong> <%= @recipe.description %></p>
+<ul>
+  <% recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+<p><%= recipe.instruction%></p>
