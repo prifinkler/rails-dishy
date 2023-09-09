@@ -1,4 +1,4 @@
-# class UserIngredientsController < ApplicationController
+class UserIngredientsController < ApplicationController
 #   before_action :set_ingredient, only: %i[edit update destroy]
 
 #   def index
@@ -42,5 +42,4 @@
 #   def ingredient_params
 #     params.require(:ingredient).permit(:name)
 #   end
-
-# end
+end
