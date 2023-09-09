@@ -1,0 +1,20 @@
+  <h3>Cuisines</h3>
+    <ul>
+      <% recipe.cuisines.each do |cuisine| %>
+          <li><%= cuisine.name %></li>
+      <% end %>
+    </ul>
+
+    <h3>Ingredients</h3>
+    <ul>
+      <% recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+      <% end %>
+    </ul>
+
+    <h3>Dietary Restrictions</h3>
+    <ul>
+      <% recipe.dietaries.each do |dietary| %>
+          <li><%= dietary.dietary_type %></li>
+      <% end %>
+    </ul>

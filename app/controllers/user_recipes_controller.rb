@@ -3,7 +3,7 @@ class UserRecipesController < ApplicationController
 
   def index
     if current_user.cuisines.blank? && current_user.dietaries.blank? && current_user.ingredients.blank?
-      redirect_to edit_user_preferences_path
+      redirect_to edit_user_cuisines_path
     end
 
     @recipes = Recipe.all
@@ -23,8 +23,6 @@ class UserRecipesController < ApplicationController
       end
     end
   end
-
-
 
   def search
     @search_results = Recipe.all
