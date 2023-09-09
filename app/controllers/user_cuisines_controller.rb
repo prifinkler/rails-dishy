@@ -1,4 +1,4 @@
-# class UserCuisinesController < ApplicationController
+class UserCuisinesController < ApplicationController
 #   before_action :set_cuisine, only: %i[edit update destroy]
 
 #   def index
