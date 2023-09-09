@@ -12,28 +12,46 @@ class UserRecipesController < ApplicationController
     #   .joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
     #   .distinct
 
-      def index
-        @recipes = Recipe.all
-        if current_user.cuisine_ids.any?
-            @recipes = @recipes.joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
-        end
-        if current_user.dietary_ids.any?
-            @recipes = @recipes.joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
-        end
-        if current_user.ingredient_ids.any?
-            @recipes = @recipes.joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
-        end
-        @recipes = @recipes.distinct
-    end
     @recipes = Recipe.all
+    if current_user.cuisines
+      @recipes = @recipes.joins(:cuisines).where(cuisines: current_user.cuisines)
+    end
+
+    if current_user.ingredients
+
+      # @recipes = @recipes.joins(:ingredients).where(ingredients: current_user.ingredients)
+      raise
+      @recipes = @recipes.select { |recipe| recipe.ingredients.include?(current_user.ingredients) }
+    end
+
+    if current_user.dietaries
+      @recipes = @recipes.joins(:dietaries).where(dietaries: current_user.dietaries)
+    end
+
+
+    @recipes = @recipes.distinct
   end
 
+
+
   def search
-    @search_results = Recipe
-      .where("name ILIKE ?", "%#{params[:query]}%")
-      .where(cuisine: params[:cuisine])
-      .where(dietary: params[:dietary])
-      .where(ingredients: [:ingredients])
+    @search_results = Recipe.all
+
+    if params[:query].present?
+      @search_results = @search_results.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
+    if params[:cuisine].present?
+      @search_results = @search_results.where(cuisine: params[:cuisine])
+    end
+
+    if params[:dietary].present?
+      @search_results = @search_results.where(dietary: params[:dietary])
+    end
+
+    if params[:ingredient].present?
+      @search_results = @search_results.where("ingredients LIKE ?", "%#{params[:ingredient]}%")
+    end
   end
 
   def show

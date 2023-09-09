@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   patch 'user_preferences/update_ingredients', to: 'user_preferences#update_ingredients', as: 'update_user_ingredients'
 
   get 'user_preferences/edit_dietaries', to: 'user_preferences#edit_dietaries', as: 'edit_user_dietaries'
-  patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietary'
+  patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietaries'
 
-
+  get 'user_recipes/search', to: 'user_recipes#search', as: 'search_user_recipes'
   # Route to show the user's recipes:
   resources :user_recipes, only: %i[index edit update destroy]
 
@@ -26,9 +26,6 @@ Rails.application.routes.draw do
   resources :recipes, only: %i[index show] do
     member do
       post 'favourite', to: 'user_recipes#favourite'
-    end
-    collection do
-      get 'search', to: 'user_recipes#search'
     end
   end
 end
