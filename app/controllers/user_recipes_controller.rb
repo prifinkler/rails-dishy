@@ -6,30 +6,23 @@ class UserRecipesController < ApplicationController
       redirect_to edit_user_preferences_path
     end
 
-    # @recipes = Recipe
-    #   .joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
-    #   .joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
-    #   .joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
-    #   .distinct
-
     @recipes = Recipe.all
+
     if current_user.cuisines
       @recipes = @recipes.joins(:cuisines).where(cuisines: current_user.cuisines)
     end
 
     if current_user.ingredients
-
-      # @recipes = @recipes.joins(:ingredients).where(ingredients: current_user.ingredients)
-      raise
-      @recipes = @recipes.select { |recipe| recipe.ingredients.include?(current_user.ingredients) }
+      @recipes = @recipes.select do |recipe|
+        current_user.ingredient_ids & recipe.ingredient_ids == current_user.ingredient_ids
+      end
     end
 
     if current_user.dietaries
-      @recipes = @recipes.joins(:dietaries).where(dietaries: current_user.dietaries)
+      @recipes = @recipes.select do |recipe|
+        current_user.dietary_ids & recipe.dietary_ids == current_user.dietary_ids
+      end
     end
-
-
-    @recipes = @recipes.distinct
   end
 
 
