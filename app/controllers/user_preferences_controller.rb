@@ -54,11 +54,3 @@ class UserPreferencesController < ApplicationController
     params.require(:user).permit(dietary_ids: [])
   end
 end
-
-
-#   private
-
-#   def user_preferences_params
-#     params.require(:user).permit(cuisine_ids: [], ingredient_ids: [], dietary_ids: [])
-#   end
-# end

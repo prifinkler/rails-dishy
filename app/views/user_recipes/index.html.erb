@@ -1,15 +1,29 @@
 <h1>All Recipes</h1>
-
 <% @recipes.each do |recipe| %>
   <div class="recipe-card">
     <h2><%= recipe.name %></h2>
-    <p><%= recipe.ingredients %></p>
-    <p><%= recipe.cuisines %></p>
-    <p><%= recipe.dietaries %></p>
+    <h3>Ingredients</h3>
+    <ul>
+      <% recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+      <% end %>
+    </ul>
+    <h3>Cuisines</h3>
+    <ul>
+      <% recipe.cuisines.each do |cuisine| %>
+          <li><%= cuisine.name %></li>
+      <% end %>
+    </ul>
+    <h3>Dietary Restrictions</h3>
+    <ul>
+      <% recipe.dietaries.each do |dietary| %>
+          <li><%= dietary.dietary_type %></li>
+      <% end %>
+    </ul>
     <!-- Add a checkbox or button for selecting the recipe -->
     <label>
       <input type="checkbox" name="selected_recipes[]" value="<%= recipe.id %>">
-      <%# <%= link_to 'Favourite', favourite_user_recipe_path(@recipe), method: :post %>  %>
+      <%# <%= link_to 'Favourite', favourite_user_recipe_path(@recipe), method: :post %>
       Select
     </label>
   </div>

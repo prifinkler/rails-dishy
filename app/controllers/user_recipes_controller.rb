@@ -6,26 +6,17 @@ class UserRecipesController < ApplicationController
       redirect_to edit_user_preferences_path
     end
 
-    # @recipes = Recipe
-    #   .joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
-    #   .joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
-    #   .joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
-    #   .distinct
-
-      def index
-        @recipes = Recipe.all
-        if current_user.cuisine_ids.any?
-            @recipes = @recipes.joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
-        end
-        if current_user.dietary_ids.any?
-            @recipes = @recipes.joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
-        end
-        if current_user.ingredient_ids.any?
-            @recipes = @recipes.joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
-        end
-        @recipes = @recipes.distinct
-    end
     @recipes = Recipe.all
+    if current_user.cuisines
+      @recipes = @recipes.joins(:cuisines).where(cuisines: { id: current_user.cuisine_ids })
+    end
+    if current_user.dietary_ids.any?
+      @recipes = @recipes.joins(:dietaries).where(dietaries: { id: current_user.dietary_ids })
+    end
+    if current_user.ingredient_ids.any?
+      @recipes = @recipes.joins(:ingredients).where(ingredients: { id: current_user.ingredient_ids })
+    end
+    @recipes = @recipes.distinct
   end
 
   def search
