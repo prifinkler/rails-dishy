@@ -7,7 +7,6 @@ class UserRecipesController < ApplicationController
     end
 
     @recipes = Recipe.all
-
     if current_user.cuisines
       @recipes = @recipes.joins(:cuisines).where(cuisines: current_user.cuisines)
     end
