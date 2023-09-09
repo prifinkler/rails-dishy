@@ -21,10 +21,11 @@
       <% end %>
     </ul>
     <!-- Add a checkbox or button for selecting the recipe -->
-    <label>
-      <input type="checkbox" name="selected_recipes[]" value="<%= recipe.id %>">
-      <%# <%= link_to 'Favourite', favourite_user_recipe_path(@recipe), method: :post %>
-      Select
-    </label>
+      <% if current_user.recipes.include?(recipe) %>
+      <%= link_to "Remove from favourite", unfavourite_user_recipe_path(recipe) %>
+    <% else %>
+      <%= link_to "Favourite this recipe", favourite_user_recipe_path(recipe) %>
     <% end %>
-  </div>
+    <%= link_to 'Go to Favourites', favourite_index_path, class: 'btn btn-primary' %>
+    </div>
+<% end %>
