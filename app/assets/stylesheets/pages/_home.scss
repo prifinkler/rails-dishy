@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+.homebg {
+  background-image: url("Flour.jpg");
+  background-size: cover;
+  height: 100vh;
+  background-position: center bottom;
+  color: $white;
+  background-repeat: no-repeat;
+}
+
+.container-hm {
+  // display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
+  margin-top: 250px;
+}
+
+.align-middle {
+  width: 50% !important;
+}
