@@ -29,10 +29,6 @@ class UserRecipesController < ApplicationController
   def search
     @search_results = Recipe.all
 
-    if params[:query].present?
-      @search_results = @search_results.where("name ILIKE ?", "%#{params[:query]}%")
-    end
-
     if params[:cuisine].present?
       @search_results = @search_results.where(cuisine: params[:cuisine])
     end
@@ -42,8 +38,9 @@ class UserRecipesController < ApplicationController
     end
 
     if params[:ingredient].present?
-      @search_results = @search_results.where("ingredients LIKE ?", "%#{params[:ingredient]}%")
+      @search_results = @search_results.where(ingredient: params[:ingredient])
     end
+    render 'search'
   end
 
   def show
@@ -51,14 +48,24 @@ class UserRecipesController < ApplicationController
   end
 
   def favourite
-    @user_recipe = UserRecipe.find(params[:id])
-      if current_user.favourite.include?(@recipe)
-        flash[:notice] = "Recipe is already in your favorites"
-    else
-        current_user.favourite << @recipe
-        flash[:success] = "Recipe added to favorites"
-    end
-    redirect_to @recipe
+    @favourites = []
+    recipe = Recipe.find(params[:id])
+    @favourites << recipe
+    current_user.recipes << recipe
+    # current_user.save
+    # @favourites << recipe
+    redirect_to user_recipes_path
+  end
+
+  def unfavourite
+    recipe = Recipe.find(params[:id])
+    current_user.recipes.delete(recipe)
+    current_user.save
+    redirect_to user_recipes_path
+  end
+
+  def favourite_index
+    @recipes = current_user.favourites
   end
 
   private
