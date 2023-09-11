@@ -1,12 +1,13 @@
 // Specific CSS for your home-page
 .homebg {
-  background-image: url("Flour.jpg");
+  background-image:  linear-gradient(rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 75%), url("Flour.jpg");
   background-size: cover;
   height: 100vh;
   background-position: center bottom;
   color: $white;
   background-repeat: no-repeat;
 }
+jdksajfdks 
 
 .container-hm {
   // display: flex;

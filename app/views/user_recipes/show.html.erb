@@ -1,12 +1,24 @@
-<div class="container py-4">
-  <%= render "shared/navbar" %>
+<%= render "shared/navbar" %>
+<div class="container recipe-card py-4">
+  <h3><%= @recipe.name%></h3>
+    <p><strong><%= @recipe.description %></strong></p>
+    <h5>Ingredients</h5>
+    <ul>
+      <% @recipe.ingredients.each do |ingredient| %>
+          <li><%= ingredient.name %></li>
+      <% end %>
+    </ul>
+    <h5>Cuisines</h5>
+    <ul>
+      <% @recipe.cuisines.each do |cuisine| %>
+          <li><%= cuisine.name %></li>
+      <% end %>
+    </ul>
+    <h5>Dietary Restrictions</h5>
+    <ul>
+      <% @recipe.dietaries.each do |dietary| %>
+          <li><%= dietary.dietary_type %></li>
+      <% end %>
+    </ul>
+    <p><%= @recipe.instruction%></p>
 </div>
-<h3><%= @recipe.name</h3>
-
-<p><strong> <%= @recipe.description %></p>
-<ul>
-  <% recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.name %></li>
-  <% end %>
-</ul>
-<p><%= recipe.instruction%></p>
