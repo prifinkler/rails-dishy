@@ -23,9 +23,7 @@ Dietary.destroy_all
 Cuisine.destroy_all
 Ingredient.destroy_all
 
-
 puts "Database cleaned"
-
 
 dietaries = [
   { dietary_type: 'Vegan' },
@@ -53,23 +51,23 @@ end
 puts "Dietary types created!"
 
 cuisines = [
-  { name: 'Italian' },
+  { name: 'African' },
+  { name: 'American' },
+  { name: 'Brazilian' },
+  { name: 'Cajun' },
   { name: 'Chinese' },
-  { name: 'Mexican' },
-  { name: 'Indian' },
-  { name: 'Japanese' },
   { name: 'French' },
   { name: 'Greek' },
-  { name: 'Thai' },
-  { name: 'Spanish' },
-  { name: 'American' },
-  { name: 'Mediterranean' },
-  { name: 'Middle Eastern' },
-  { name: 'Vietnamese' },
+  { name: 'Indian' },
+  { name: 'Italian' },
+  { name: 'Japanese' },
   { name: 'Korean' },
-  { name: 'Cajun' },
-  { name: 'Brazilian' },
-  { name: 'African' }
+  { name: 'Mediterranean' },
+  { name: 'Mexican' },
+  { name: 'Middle Eastern' },
+  { name: 'Spanish' },
+  { name: 'Thai' },
+  { name: 'Vietnamese' }
 ]
 
 cuisines.each do |cuisine|
@@ -194,6 +192,7 @@ margarita_pizza = Recipe.create!(
   name: 'Classic Margherita Pizza',
   description: 'Enjoy the simplicity and flavors of a classic Margherita pizza.',
   time: 30,
+  photo_url: 'seed/margarita_pizza.jpg',
   instruction: '1. Preheat your oven to 475°F (245°C).
                 2. Roll out the pizza dough into a thin circle.
                 3. Spread tomato sauce over the dough.
@@ -218,6 +217,7 @@ stir_fried_chicken_with_broccoli = Recipe.create!(
   name: 'Stir-Fried Chicken with Broccoli',
   description: 'A quick and healthy stir-fry with tender chicken and crisp broccoli.',
   time: 25,
+  photo_url: 'seed/stir_fried_chicken_with_broccoli.jpg',
   instruction: '1. Heat oil in a pan or wok over high heat.
                 2. Add diced chicken and stir-fry until cooked through.
                 3. Remove the chicken and set it aside.
@@ -243,6 +243,7 @@ vegetable_curry = Recipe.create!(
   name: 'Vegetable Curry',
   description: 'A flavorful and aromatic vegetable curry that is perfect for vegetarians.',
   time: 40,
+  photo_url: 'seed/vegetable_curry.jpg',
   instruction: '1. Heat oil in a large pot and sauté onions until translucent.
                 2. Add garlic, ginger, and curry paste. Cook for 2 minutes.
                 3. Stir in diced vegetables (e.g., carrots, bell peppers, and potatoes).
@@ -273,6 +274,7 @@ sushi_rolls = Recipe.create!(
   name: 'Sushi Rolls',
   description: 'Create your own sushi rolls with fresh ingredients and nori seaweed.',
   time: 45,
+  photo_url: 'seed/sushi_rolls.jpg',
   instruction: '1. Place a sheet of nori on a bamboo sushi mat.
                 2. Spread a layer of sushi rice over the nori, leaving a border at the top.
                 3. Add your choice of fillings (e.g., avocado, cucumber, and cooked shrimp).
@@ -298,6 +300,7 @@ ratatouille = Recipe.create!(
   name: 'Ratatouille',
   description: 'A traditional French Provençal stewed vegetable dish.',
   time: 50,
+  photo_url: 'seed/ratatouille.jpg',
   instruction: '1. Heat olive oil in a large pot.
                 2. Sauté onions, garlic, and bell peppers until softened.
                 3. Add diced tomatoes, eggplant, zucchini, and herbs.
@@ -325,6 +328,7 @@ greek_salad = Recipe.create!(
   name: 'Greek Salad',
   description: 'A refreshing and healthy salad with Mediterranean flavors.',
   time: 15,
+  photo_url: 'seed/greek_salad.jpg',
   instruction: '1. In a large bowl, combine diced cucumbers, tomatoes, and red onions.
                 2. Add black olives and crumbled feta cheese.
                 3. Drizzle with olive oil and sprinkle with dried oregano.
@@ -350,6 +354,7 @@ pad_thai = Recipe.create!(
   name: 'Pad Thai',
   description: 'A classic Thai noodle dish with a perfect balance of sweet, sour, and savory flavors.',
   time: 35,
+  photo_url: 'seed/pad_thai.jpg',
   instruction: '1. Soak rice noodles in hot water until softened, then drain.
                 2. Heat oil in a wok or large pan.
                 3. Add shrimp and tofu; cook until shrimp turns pink.
@@ -382,6 +387,7 @@ spanish_paella = Recipe.create!(
   name: 'Spanish Paella',
   description: 'A flavorful Spanish rice dish with saffron, seafood, and chicken.',
   time: 60,
+  photo_url: 'seed/spanish_paella.jpg',
   instruction: '1. Heat olive oil in a paella pan.
                 2. Sauté onions, garlic, and bell peppers.
                 3. Add diced chicken and cook until browned.
@@ -414,7 +420,8 @@ Recipe.last.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
 bbq_pulled_pork_sandwich = Recipe.create!(
   name: 'BBQ Pulled Pork Sandwich',
   description: 'Tender pulled pork with smoky BBQ sauce, served in a soft bun.',
-  time: 8 * 60,  # 8 hours for slow cooking
+  time: 8 * 60, # 8 hours for slow cooking
+  photo_url: 'seed/bbq_pulled_pork_sandwich.jpg',
   instruction: '1. Rub pork shoulder with a dry spice rub.
                 2. Slow-cook the pork in a smoker or oven at low heat for 8 hours.
                 3. Shred the cooked pork with two forks.
@@ -438,6 +445,7 @@ vegetable_sushi_bowl = Recipe.create!(
   name: 'Vegetable Sushi Bowl',
   description: 'A deconstructed sushi bowl with a variety of fresh vegetables.',
   time: 25,
+  photo_url: 'seed/vegetable_sushi_bowl.jpg',
   instruction: '1. Cook sushi rice according to package instructions and let it cool.
                 2. Arrange sushi rice in bowls.
                 3. Top with sliced avocado, cucumber, carrots, and pickled ginger.
