@@ -11,8 +11,7 @@ class Recipe < ApplicationRecord
   has_many :recipe_dietaries
   has_many :dietaries, through: :recipe_dietaries
 
-  # has_one_attached :photo
-
   validates :name, :instruction, :description, presence: true, length: { minimum: 2 }
   validates :time, presence: true, numericality: { greater_than_or_equal_to: 1 }
+  validates :photo_url, presence: true
 end
