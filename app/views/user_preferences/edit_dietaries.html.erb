@@ -1,13 +1,13 @@
-<%= simple_form_for(@user, url: update_user_dietaries_path, method: :patch) do |f| %>
-  <h2>Select Your Dietary Restrictions</h2>
-  <%= f.association :dietaries, collection: Dietary.all,
-                    as: :check_boxes,
-                    input_html: { class: "tag-selector" },
-                    item_wrapper_class: 'tag-item',
-                    label_method: :dietary_type,
-                    value_method: :id %>
-
-  <%= f.submit "Save Dietary Preferences" %>
-  <%= button_to "Skip", user_recipes_path, method: :get, class: "skip-button" %>
-
-<% end %>
+<div class="container py-4">
+  <%= simple_form_for(@user, url: update_user_dietaries_path, method: :patch) do |f| %>
+    <%= f.association :dietaries, collection: Dietary.all,
+                      as: :check_boxes,
+                      input_html: { class: "tag-selector" },
+                      item_wrapper_class: 'tag-item',
+                      label_method: :dietary_type,
+                      value_method: :id %>
+    <%= link_to "Previous", edit_user_ingredients_path, method: :get, class: "button-8" %>
+    <%= f.submit "Save", class: "button-8" %>
+    <%= link_to "Skip", edit_user_dietaries_path, method: :get, class: "button-8" %>
+  <% end %>
+</div>
