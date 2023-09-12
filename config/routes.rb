@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietaries'
 
   get 'user_recipes/search', to: 'user_recipes#search', as: 'search_user_recipes'
-
   # get 'user_recipes/:id/favourite', to: 'user_recipes#favourite', as: 'favourite_user_reci'
   # get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'  get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'
   resources :favourites, only: %i[index show create destroy]

@@ -24,8 +24,6 @@ class UserRecipesController < ApplicationController
     end
   end
 
-
-
   def search
 
     @recipes = Recipe.all
