@@ -1,11 +1,11 @@
-<%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
-  <h2>Select Your Ingredient Preferences</h2>
-  <%= f.association :ingredients, collection: Ingredient.all,
-                    as: :check_boxes,
-                    input_html: { class: "tag-selector" },
-                    item_wrapper_class: 'tag-item' %>
-
-  <%= f.submit "Save Ingredient Preferences" %>
-  <%= button_to "Skip", user_recipes_path, method: :get, class: "skip-button" %>
-
-<% end %>
+<div class="container py-4">
+  <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
+    <%= f.association :ingredients, collection: Ingredient.all,
+                      as: :check_boxes,
+                      input_html: { class: "tag-selector" },
+                      item_wrapper_class: 'tag-item' %>
+    <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "button-8" %>
+    <%= f.submit "Save", class: "button-8" %>
+    <%= link_to "Skip", user_recipes_path, method: :get, class: "button-8" %>
+  <% end %>
+</div>
