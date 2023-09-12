@@ -1,17 +1,21 @@
+<%# <%= render "shared/navbar" %>
+
 <div class="swiper">
   <div class="swiper-wrapper">
     <% @recipes.each do |recipe| %>
-      <%# <div class="swiper-slide swiper-bg text-center" style="background-image: url('<%= asset_path(recipe.photo_url) %>
-      <div class="swiper-slide swiper-bg text-center">
-        <img src="<%= asset_path(recipe.photo_url) %>" >
-        <%= link_to favourite_index_path(recipe) do %>
-          <i class="far fa-heart"></i>
-        <% end %>
-        <%= link_to user_recipes_path(recipe) do %>
-          <i class="far fa-circle-xmark"></i>
-        <% end %>
-        <h2><%= recipe.name %></h2>
-        <%= link_to "See more details", user_recipe_path(recipe) %>
+      <div class="swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url)%>')" >
+        <div class="container mt-auto text-center text-white">
+          <%= link_to favourite_index_path(recipe) do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+          <%= link_to user_recipes_path(recipe) do %>
+            <i class="far fa-remove"></i>
+          <% end %>
+          <h2><%= recipe.name %></h2>
+          <%= link_to "See more details", user_recipe_path(recipe) %>
+          <%= link_to "Edit preferences", edit_user_cuisines_path %>
+
+        </div>
       </div>
     <% end %>
   </div>

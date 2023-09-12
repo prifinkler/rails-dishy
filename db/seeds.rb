@@ -236,12 +236,12 @@ stir_fried_chicken_with_broccoli.ingredients << Ingredient.find_or_create_by(nam
 stir_fried_chicken_with_broccoli.ingredients << Ingredient.find_or_create_by(name: "Oil")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Chinese")
-Recipe.last.dietaries << Dietary.find_by(dietary_type: "High-protein")
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "Low-carb")
 
 # Recipe 3
 vegetable_curry = Recipe.create!(
   name: 'Vegetable Curry',
-  description: 'A flavorful and aromatic vegetable curry that is perfect for vegetarians.',
+  description: 'A flavorful and aromatic vegetable curry that is perfect for a healthy meal.',
   time: 40,
   photo_url: 'seed/vegetable_curry.jpg',
   instruction: '1. Heat oil in a large pot and sauté onions until translucent.
@@ -347,7 +347,7 @@ greek_salad.ingredients << Ingredient.find_or_create_by(name: "Salt")
 greek_salad.ingredients << Ingredient.find_or_create_by(name: "Black pepper")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Greek")
-Recipe.last.dietaries << Dietary.find_by(dietary_type: "Mediterranean")
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
 
 # Recipe 7
 pad_thai = Recipe.create!(
@@ -414,7 +414,7 @@ spanish_paella.ingredients << Ingredient.find_or_create_by(name: "Lemon wedges")
 spanish_paella.ingredients << Ingredient.find_or_create_by(name: "Fresh parsley")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Spanish")
-Recipe.last.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "Lactose intolerant")
 
 # Recipe 9
 bbq_pulled_pork_sandwich = Recipe.create!(
@@ -438,7 +438,7 @@ bbq_pulled_pork_sandwich.ingredients << Ingredient.find_or_create_by(name: "Barb
 bbq_pulled_pork_sandwich.ingredients << Ingredient.find_or_create_by(name: "Hamburger buns")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "American")
-Recipe.last.dietaries << Dietary.find_by(dietary_type: "Halal")
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "Lactose intolerant")
 
 # Recipe 10
 vegetable_sushi_bowl = Recipe.create!(
@@ -474,5 +474,4 @@ User.create!(
   password: '123456'
 )
 
-# RecipeIngredient.create!(recipe_id: Recipe.last.id, ingredient_id: Ingredient.last.id)
-puts "done"
+puts "Done!"
