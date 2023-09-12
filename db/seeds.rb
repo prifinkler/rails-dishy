@@ -590,7 +590,7 @@ jollof_rice_recipe = Recipe.create!(
   name: 'Jollof Rice',
   description: 'Jollof rice gets a smoky flavor boost in this delicious jollof recipe from Lerato Umah-Shaylor.',
   time: 60,
-  photo_url: 'seed/jollof_rice.jpg', # Add the URL of the recipe photo
+  photo_url: 'seed/jollof_rice.jpg',
   instruction: '1. Put all the puree ingredients in a food processor, except the scotch bonnets, if using whole, and whizz into a thick and aromatic puree.
                 2. Put the oil in a wide large saucepan, for which you have a tightly fitting lid, and set over a medium heat. Add the red onion and a pinch of fine sea salt. Cook for 15 minutes, stirring often, until softened and golden. If it starts to get dry, add a little splash of water to prevent the onion from burning.
                 3. Stir in the tomato puree and cook for 2-3 minutes, until the puree starts to separate. Add the spices and herbs and cook for 2 minutes, stirring continuously.

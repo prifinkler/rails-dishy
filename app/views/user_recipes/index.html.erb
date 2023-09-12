@@ -3,17 +3,21 @@
 <div class="swiper">
   <div class="swiper-wrapper">
     <% @recipes.each do |recipe| %>
-      <div class="swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url)%>')" >
-        <div class="container mt-auto text-center text-white">
-          <%= link_to favourites_path(recipe) do %>
-            <i class="far fa-heart"></i>
-          <% end %>
-          <%= link_to user_recipes_path(recipe) do %>
-            <i class="far fa-circle-xmark"></i>
-          <% end %>
+      <div class="swiper-slide d-flex align-items-end" style="background-image: url('<%= asset_path(recipe.photo_url)%>'); background-size: cover;" >
+        <div class="container swiper-info">
           <h2><%= recipe.name %></h2>
-          <%= link_to "See more details", user_recipe_path(recipe) %>
-          <%= link_to "Edit preferences", edit_user_cuisines_path %>
+          <div class="d-flex justify-content-evenly">
+            <%= link_to favourites_path(recipe) do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+            <%= link_to user_recipes_path(recipe) do %>
+              <i class="far fa-circle-xmark"></i>
+            <% end %>
+          </div>
+          <div class="col">
+            <%= link_to "See more details", user_recipe_path(recipe), class:"row" %>
+            <%= link_to "Edit preferences", edit_user_cuisines_path, class:"row"  %>
+          </div>
         </div>
       </div>
     <% end %>
