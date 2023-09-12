@@ -25,43 +25,38 @@ class UserRecipesController < ApplicationController
   end
 
   def search
-    @search_results = Recipe.all
 
+    @recipes = Recipe.all
     if params[:query].present?
-      @search_results = @search_results.where("name ILIKE ?", "%#{params[:query]}%")
-    end
+      @recipes = Recipe.search_by_name_and_time(params[:query])
+    else
+      @Recipes = Recipe.all
+  end
 
-    if params[:cuisine].present?
-      @search_results = @search_results.where(cuisine: params[:cuisine])
-    end
+    # @search_results = Recipe.all
 
-    if params[:dietary].present?
-      @search_results = @search_results.where(dietary: params[:dietary])
-    end
+    # if params[:cuisine].present?
+    #   @search_results = @search_results.where(cuisine: params[:cuisine])
+    # end
 
-    if params[:ingredient].present?
-      @search_results = @search_results.where("ingredients LIKE ?", "%#{params[:ingredient]}%")
-    end
+    # if params[:dietary].present?
+    #   @search_results = @search_results.where(dietary: params[:dietary])
+    # end
+
+    # if params[:ingredient].present?
+    #   @search_results = @search_results.where(ingredient: params[:ingredient])
+    # end
+    # render 'search'
   end
 
   def show
-    @recipes = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
-  def favourite
-    @user_recipe = UserRecipe.find(params[:id])
-      if current_user.favourite.include?(@recipe)
-        flash[:notice] = "Recipe is already in your favorites"
-    else
-        current_user.favourite << @recipe
-        flash[:success] = "Recipe added to favorites"
-    end
-    redirect_to @recipe
-  end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :time, :instruction, :description)
+    params.require(:recipe).permit(:name, :time, :instruction, :description, :photo_url)
   end
 end

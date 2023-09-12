@@ -1,0 +1,23 @@
+.swiper {
+  height: 100vh;
+}
+
+.index {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.index-bg h2 {
+  padding: 24px 0;
+  color: $white;
+}
+
+// .index-bg img {
+//   background-size: cover;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   height: 100vh;
+//   width: 100%;
+// }

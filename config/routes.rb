@@ -16,13 +16,14 @@ Rails.application.routes.draw do
   patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietaries'
 
   get 'user_recipes/search', to: 'user_recipes#search', as: 'search_user_recipes'
-  # Route to show the user's recipes:
-  resources :user_recipes, only: %i[index edit update destroy]
+  # get 'user_recipes/:id/favourite', to: 'user_recipes#favourite', as: 'favourite_user_reci'
+  # get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'  get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'
+  resources :favourites, only: %i[index show create destroy]
 
-  # Routes for favourite and search:
-  resources :user_recipes, only: %i[index show] do
-    member do
-      post 'favourite', to: 'user_recipes#favourite'
-    end
+  # Route to show the user's recipes:
+  resources :user_recipes, only: %i[index show edit update destroy] do
+    collection do
+    get :search
   end
+end
 end

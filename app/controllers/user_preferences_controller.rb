@@ -8,11 +8,13 @@ class UserPreferencesController < ApplicationController
   def update_cuisines
     @user = current_user
     if @user.update(user_cuisines_params)
-      redirect_to edit_user_ingredients_path, notice: 'Cuisine preferences updated successfully.'
+      redirect_to edit_user_ingredients_path
     else
       render :edit_cuisines
     end
   end
+
+
 
   def edit_ingredients
     @user = current_user
@@ -21,7 +23,7 @@ class UserPreferencesController < ApplicationController
   def update_ingredients
     @user = current_user
     if @user.update(user_ingredients_params)
-      redirect_to edit_user_dietaries_path, notice: 'Ingredient preferences updated successfully.'
+      redirect_to edit_user_dietaries_path
     else
       render :edit_ingredients
     end
@@ -34,7 +36,7 @@ class UserPreferencesController < ApplicationController
   def update_dietaries
     @user = current_user
     if @user.update(user_dietaries)
-      redirect_to user_recipes_path, notice: 'Dietary preferences updated successfully.'
+      redirect_to user_recipes_path
     else
       render :edit_dietaries
     end

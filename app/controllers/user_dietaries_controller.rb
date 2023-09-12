@@ -1,4 +1,4 @@
-# class UserDietariesController < ApplicationController
+class UserDietariesController < ApplicationController
 #   before_action :set_dietary, only: %i[edit update destroy]
 
 #   def index
@@ -42,5 +42,4 @@
 #   def dietary_params
 #     params.require(:dietary).permit(:dietary_type)
 #   end
-
-# end
+end
