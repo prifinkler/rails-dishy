@@ -16,14 +16,11 @@ class FavouritesController < ApplicationController
   end
 
   def create
-    @favourite = current_user.favourites.create(favourite_params)
-    # @favourite = Favourite.new(favourite_params)
+    @favourite = Favourite.new
+    @favourite.user = current_user
     @favourite.recipe = @recipe
-    if @favourite.save
-      redirect_to recipe_path(@favourite.recipe)
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @favourite.save!
+      puts "recipe liked"
   end
 
   def destroy
@@ -41,8 +38,8 @@ class FavouritesController < ApplicationController
   end
 
   def set_favourite
-    @favourite = current_user.favourites.find(params[:id])
-    # @favourite = Favourite.find(params[:id])
+    # @favourite = current_user.favourites.find(params[:id])
+    @favourite = Favourite.find(params[:id])
   end
 
 end
