@@ -8,16 +8,16 @@ class Recipe < ApplicationRecord
   }
 
   has_many :users, through: :favourites
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
 
-  has_many :recipe_ingredients
+  has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
 
-  has_many :recipe_cuisines
+  has_many :recipe_cuisines, dependent: :destroy
   has_many :cuisines, through: :recipe_cuisines
 
-  has_many :recipe_dietaries
+  has_many :recipe_dietaries, dependent: :destroy
   has_many :dietaries, through: :recipe_dietaries
 
   validates :name, :instruction, :description, presence: true, length: { minimum: 2 }
