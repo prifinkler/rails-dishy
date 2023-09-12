@@ -5,7 +5,7 @@
     <% @recipes.each do |recipe| %>
       <div class="swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url)%>')" >
         <div class="container mt-auto text-center text-white">
-          <%= link_to favourite_path(recipe) do %>
+          <%= link_to favourites_path(recipe) do %>
             <i class="far fa-heart"></i>
           <% end %>
           <%= link_to user_recipes_path(recipe) do %>
