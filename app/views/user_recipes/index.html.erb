@@ -9,12 +9,11 @@
             <i class="far fa-heart"></i>
           <% end %>
           <%= link_to user_recipes_path(recipe) do %>
-            <i class="far fa-remove"></i>
+            <i class="far fa-circle-xmark"></i>
           <% end %>
           <h2><%= recipe.name %></h2>
           <%= link_to "See more details", user_recipe_path(recipe) %>
           <%= link_to "Edit preferences", edit_user_cuisines_path %>
-
         </div>
       </div>
     <% end %>

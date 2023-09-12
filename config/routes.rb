@@ -17,10 +17,14 @@ Rails.application.routes.draw do
 
   get 'user_recipes/search', to: 'user_recipes#search', as: 'search_user_recipes'
 
-  get 'user_recipes/:id/favourite', to: 'user_recipes#favourite', as: 'favourite_user_recipe'
-  get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'
+  # get 'user_recipes/:id/favourite', to: 'user_recipes#favourite', as: 'favourite_user_reci'
+  # get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'  get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'
+  resources :favourites, only: %i[index show create destroy]
 
-  get '/user_recipes/favourites', to: 'user_recipes#favourite_index', as: 'favourite_index'
   # Route to show the user's recipes:
-  resources :user_recipes, only: %i[index show edit update destroy]
+  resources :user_recipes, only: %i[index show edit update destroy] do
+    collection do
+    get :search
+  end
+end
 end

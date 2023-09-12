@@ -1,11 +1,48 @@
-<div class="container py-4">
-  <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
-    <%= f.association :ingredients, collection: Ingredient.all,
-                      as: :check_boxes,
-                      input_html: { class: "tag-selector" },
-                      item_wrapper_class: 'tag-item' %>
-    <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "button-8" %>
-    <%= f.submit "Save", class: "button-8" %>
-    <%= link_to "Skip", user_recipes_path, method: :get, class: "button-8" %>
-  <% end %>
+<html>
+<head>
+  <title>Your Form Title</title>
+  <link rel="stylesheet" href="path/to/your/styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container py-4">
+    <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
+      <div class="ingredient-form">
+        <input type="text" id="ingredient-input" class="ingredient-input" name="user[ingredient_list][]" placeholder="Enter an ingredient">
+        <button type="button" id="add-ingredient" class="add-ingredient-button">Add</button>
+      </div>
+
+      <!-- Display added ingredients -->
+      <div class="selected-ingredients">
+        <ul id="selected-ingredients-list" class="selected-ingredients-list">
+          <!-- Newly added ingredients will be displayed here via JavaScript -->
+        </ul>
+      </div>
+
+      <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "button-8" %>
+      <%= f.submit "Save", class: "button-8" %>
+      <h3> press on the added ingredients to remove from list</h3>
+      <%= link_to "Skip", user_recipes_path, method: :get, class: "button-8" %>
+    <% end %>
 </div>
+  
+  <script src="path/to/script.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#add-ingredient").click(function() {
+        var ingredient = $("#ingredient-input").val();
+        if (ingredient) {
+          var listItem = $("<li>").text(ingredient);
+          $("#selected-ingredients-list").append(listItem);
+          $("#ingredient-input").val(""); // Clear the input field
+        }
+      });
+
+      $("#selected-ingredients-list").on("click", "li", function() {
+      $(this).remove();
+    });
+});
+
+  </script>
+</body>
+</html>
