@@ -7,7 +7,8 @@
         <div class="container swiper-info">
           <h2><%= recipe.name %></h2>
           <div class="d-flex justify-content-evenly">
-            <%= link_to favourites_path(recipe) do %>
+
+            <%= button_to favourites_path(recipe_id: recipe.id) do %>
               <i class="far fa-heart"></i>
             <% end %>
             <%= link_to user_recipes_path(recipe) do %>
