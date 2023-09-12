@@ -27,46 +27,34 @@ class UserRecipesController < ApplicationController
 
 
   def search
-    @search_results = Recipe.all
 
-    if params[:cuisine].present?
-      @search_results = @search_results.where(cuisine: params[:cuisine])
-    end
+    @recipes = Recipe.all
+    if params[:query].present?
+      @recipes = Recipe.search_by_name_and_time(params[:query])
+    else
+      @Recipes = Recipe.all
+  end
 
-    if params[:dietary].present?
-      @search_results = @search_results.where(dietary: params[:dietary])
-    end
+    # @search_results = Recipe.all
 
-    if params[:ingredient].present?
-      @search_results = @search_results.where(ingredient: params[:ingredient])
-    end
-    render 'search'
+    # if params[:cuisine].present?
+    #   @search_results = @search_results.where(cuisine: params[:cuisine])
+    # end
+
+    # if params[:dietary].present?
+    #   @search_results = @search_results.where(dietary: params[:dietary])
+    # end
+
+    # if params[:ingredient].present?
+    #   @search_results = @search_results.where(ingredient: params[:ingredient])
+    # end
+    # render 'search'
   end
 
   def show
     @recipe = Recipe.find(params[:id])
   end
 
-  def favourite
-    @favourites = []
-    recipe = Recipe.find(params[:id])
-    @favourites << recipe
-    current_user.recipes << recipe
-    # current_user.save
-    # @favourites << recipe
-    redirect_to user_recipes_path
-  end
-
-  def unfavourite
-    recipe = Recipe.find(params[:id])
-    current_user.recipes.delete(recipe)
-    current_user.save
-    redirect_to user_recipes_path
-  end
-
-  def favourite_index
-    @recipes = current_user.favourites
-  end
 
   private
 

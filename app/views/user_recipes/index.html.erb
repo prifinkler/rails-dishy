@@ -4,7 +4,7 @@
       <%# <div class="swiper-slide swiper-bg text-center" style="background-image: url('<%= asset_path(recipe.photo_url) %>
       <div class="swiper-slide swiper-bg text-center">
         <img src="<%= asset_path(recipe.photo_url) %>" >
-        <%= link_to favourite_index_path(recipe) do %>
+        <%= link_to favourites_path(recipe), method: :post do %>
           <i class="far fa-heart"></i>
         <% end %>
         <%= link_to user_recipes_path(recipe) do %>
