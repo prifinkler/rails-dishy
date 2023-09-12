@@ -3,7 +3,7 @@
     <% @recipes.each do |recipe| %>
       <%# <div class="swiper-slide swiper-bg text-center" style="background-image: url('<%= asset_path(recipe.photo_url) %>
       <div class="swiper-slide swiper-bg text-center">
-        <%# <img src="<%= asset_path(recipe.photo_url) %>
+        <img src="<%= asset_path(recipe.photo_url) %>" >
         <%= link_to favourite_index_path(recipe) do %>
           <i class="far fa-heart"></i>
         <% end %>
@@ -47,4 +47,3 @@
   //   },
   });
 </script>
-

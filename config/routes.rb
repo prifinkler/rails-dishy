@@ -22,5 +22,5 @@ Rails.application.routes.draw do
 
   get '/user_recipes/favourites', to: 'user_recipes#favourite_index', as: 'favourite_index'
   # Route to show the user's recipes:
-  resources :user_recipes, only: %i[index edit update destroy]
+  resources :user_recipes, only: %i[index show edit update destroy]
 end
