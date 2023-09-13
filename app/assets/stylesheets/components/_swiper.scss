@@ -20,10 +20,6 @@ body {
   color: $white;
 }
 
-.swiper h2 {
-  padding: 16px;
-}
-
 .swiper a {
   text-decoration: none;
   color: $white;
@@ -97,16 +93,14 @@ body {
   cursor: grabbing;
 }
 
-.swiper--card h3 {
+.swiper--card h2 {
   margin-top: 32px;
-  font-size: 32px;
   padding: 0 16px;
   pointer-events: none;
 }
 
 .swiper--card p {
-  margin-top: 24px;
-  font-size: 20px;
+  margin-top: 16px;
   padding: 0 16px;
   pointer-events: none;
 }
