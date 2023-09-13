@@ -1,13 +1,13 @@
-<div class="tinder">
-  <div class="tinder--status">
+<div class="swiper">
+  <div class="swiper--status">
     <i class="fa fa-remove"></i>
     <i class="fa fa-heart"></i>
   </div>
-  <div class="tinder--cards">
+  <div class="swiper--cards">
     <% @recipes.each do |recipe| %>
-    <div class="tinder--card swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url) %>');">
+    <div class="swiper--card swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url) %>');">
         <h2><%= recipe.name %></h2>
-        <div class="tinder--buttons">
+        <div class="swiper--buttons">
           <button id="nope"><i class="fa fa-remove"></i></button>
           <button id="love"><i class="fa fa-heart"></i></button>
         </div>
@@ -24,13 +24,13 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", function () {
-  var tinderContainer = document.querySelector('.tinder');
-  var allCards = document.querySelectorAll('.tinder--card');
+  var swiperContainer = document.querySelector('.swiper');
+  var allCards = document.querySelectorAll('.swiper--card');
   var nope = document.getElementById('nope');
   var love = document.getElementById('love');
 
   function initCards(card, index) {
-    var newCards = document.querySelectorAll('.tinder--card:not(.removed)');
+    var newCards = document.querySelectorAll('.swiper--card:not(.removed)');
 
     newCards.forEach(function (card, index) {
       card.style.zIndex = allCards.length - index;
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.style.opacity = (10 - index) / 10;
     });
 
-    tinderContainer.classList.add('loaded');
+    swiperContainer.classList.add('loaded');
   }
 
   initCards();
@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (event.deltaX === 0) return;
       if (event.center.x === 0 && event.center.y === 0) return;
 
-      tinderContainer.classList.toggle('tinder_love', event.deltaX > 0);
-      tinderContainer.classList.toggle('tinder_nope', event.deltaX < 0);
+      swiperContainer.classList.toggle('swiper_love', event.deltaX > 0);
+      swiperContainer.classList.toggle('swiper_nope', event.deltaX < 0);
 
       var xMulti = event.deltaX * 0.03;
       var yMulti = event.deltaY / 80;
@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     hammertime.on('panend', function (event) {
       el.classList.remove('moving');
-      tinderContainer.classList.remove('tinder_love');
-      tinderContainer.classList.remove('tinder_nope');
+      swiperContainer.classList.remove('swiper_love');
+      swiperContainer.classList.remove('swiper_nope');
 
       var moveOutWidth = document.body.clientWidth;
       var keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function createButtonListener(love) {
     return function (event) {
-      var cards = document.querySelectorAll('.tinder--card:not(.removed)');
+      var cards = document.querySelectorAll('.swiper--card:not(.removed)');
       var moveOutWidth = document.body.clientWidth * 1.5;
 
       if (!cards.length) return false;
