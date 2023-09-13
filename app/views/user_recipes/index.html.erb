@@ -5,7 +5,7 @@
   </div>
   <div class="swiper--cards">
     <% @recipes.each do |recipe| %>
-    <div class="swiper--card swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url) %>');">
+    <div class="swiper--card swiper-slide" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover;">
         <h2><%= recipe.name %></h2>
         <div class="swiper--buttons">
           <button id="nope"><i class="fa fa-remove"></i></button>
@@ -24,6 +24,16 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  var currentFocus = document.activeElement;
+
+  if (!currentFocus) {
+    var elementToFocus = document.getElementById("myInput");
+    if (elementToFocus) {
+      elementToFocus.focus();
+    }
+  }
+
   var swiperContainer = document.querySelector('.swiper');
   var allCards = document.querySelectorAll('.swiper--card');
   var nope = document.getElementById('nope');
