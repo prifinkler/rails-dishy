@@ -20,13 +20,12 @@ class FavouritesController < ApplicationController
     @favourite.user = current_user
     @favourite.recipe = @recipe
     @favourite.save!
-      puts "recipe liked"
   end
 
   def destroy
     @favourite.destroy
-    redirect_to recipes_path(@favourite.recipe), status: :see_other
   end
+
   private
 
   def favourite_params
