@@ -1,7 +1,10 @@
 <%= render "shared/navbar" %>
-<div class="container recipe-card py-4">
+<div class="container recipe-card py-4" >
   <h3><%= @recipe.name%></h3>
     <p><strong><%= @recipe.description %></strong></p>
+
+    <h5>Time: <%= "#{@recipe.time} mins" %></h5>
+
     <h5>Ingredients</h5>
     <ul>
       <% @recipe.ingredients.each do |ingredient| %>
@@ -21,4 +24,6 @@
       <% end %>
     </ul>
     <p><%= @recipe.instruction%></p>
+    <%= link_to "Back to recipes", user_recipes_path, method: :get %>
+
 </div>

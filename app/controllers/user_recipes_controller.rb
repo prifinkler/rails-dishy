@@ -25,34 +25,32 @@ class UserRecipesController < ApplicationController
   end
 
   def search
-
     @recipes = Recipe.all
     if params[:query].present?
       @recipes = Recipe.search_by_name_and_time(params[:query])
     else
       @Recipes = Recipe.all
+    end
   end
 
-    # @search_results = Recipe.all
+  # @search_results = Recipe.all
 
-    # if params[:cuisine].present?
-    #   @search_results = @search_results.where(cuisine: params[:cuisine])
-    # end
+  # if params[:cuisine].present?
+  #   @search_results = @search_results.where(cuisine: params[:cuisine])
+  # end
 
-    # if params[:dietary].present?
-    #   @search_results = @search_results.where(dietary: params[:dietary])
-    # end
+  # if params[:dietary].present?
+  #   @search_results = @search_results.where(dietary: params[:dietary])
+  # end
 
-    # if params[:ingredient].present?
-    #   @search_results = @search_results.where(ingredient: params[:ingredient])
-    # end
-    # render 'search'
-  end
+  # if params[:ingredient].present?
+  #   @search_results = @search_results.where(ingredient: params[:ingredient])
+  # end
+  # render 'search'
 
   def show
     @recipe = Recipe.find(params[:id])
   end
-
 
   private
 

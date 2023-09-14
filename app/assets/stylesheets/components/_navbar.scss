@@ -11,3 +11,13 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-toggler {
+  border: none;
+}
+
+.edit-pref {
+  font-size: 30px;
+  opacity: 0.5;
+  color: var(--bs-navbar-color);
+}
