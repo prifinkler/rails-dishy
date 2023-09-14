@@ -1,7 +1,12 @@
-<div class="navbar navbar-expand-sm navbar-lewagon bg-dark border-bottom fixed-top" data-bs-theme="dark">
+<div class="navbar navbar-expand-sm navbar-lewagon border-bottom fixed-bottom" data-bs-theme="dark">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "temp_logo.jpg" %>
+    <% end %>
+
+    <%= link_to edit_user_cuisines_path, class: "edit-pref" do %>
+      <i class="fa-regular fa-pen-to-square"></i>
+      <%# <i class="fa-regular fa-sliders"></i> %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

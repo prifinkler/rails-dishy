@@ -6,8 +6,8 @@
                       item_wrapper_class: 'tag-item',
                       label_method: :dietary_type,
                       value_method: :id %>
-    <%= link_to "Previous", edit_user_ingredients_path, method: :get, class: "button-8" %>
-    <%= f.submit "Save", class: "button-8" %>
-    <%= link_to "Skip", edit_user_dietaries_path, method: :get, class: "button-8" %>
+    <%= link_to "Previous", edit_user_ingredients_path, method: :get %>
+    <%= f.submit "Save" %>
+    <%= link_to "Skip", edit_user_dietaries_path, method: :get %>
   <% end %>
 </div>

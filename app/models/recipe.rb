@@ -1,11 +1,6 @@
 class Recipe < ApplicationRecord
-
   include PgSearch::Model
-  pg_search_scope :search_by_name_and_time,
-  against: [ :name, :time],
-  using: {
-    tsearch: { prefix: true } # <-- now `superman batm` will return something!
-  }
+  pg_search_scope :search_by_name_and_time, against: %i[name time], using: { tsearch: { prefix: true }}
 
   has_many :users, through: :favourites
   has_many :favourites, dependent: :destroy
