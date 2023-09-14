@@ -14,11 +14,11 @@
         </div>
         <div class="d-flex flex-column" style="margin-top: 24px;">
           <%= link_to "See more details", user_recipe_path(recipe) %>
-          <%= link_to "Edit preferences", edit_user_cuisines_path %>
         </div>
       </div>
     <% end %>
   </div>
+  <%= render "shared/navbar" %>
 </div>
 
 <script>

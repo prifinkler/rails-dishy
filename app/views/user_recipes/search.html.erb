@@ -1,5 +1,5 @@
 <h1>Search Results</h1>
-<div class="swiper">
+<div class="swiper page1">
   <div class="swiper-wrapper">
     <% @recipes.each do |recipe| %>
       <%# <div class="swiper-slide swiper-bg text-center" style="background-image: url('<%= asset_path(recipe.photo_url) %>
@@ -16,6 +16,7 @@
       </div>
     <% end %>
   </div>
+  <%= render "shared/navbar" %>
 </div>
 
 <script type="module">
