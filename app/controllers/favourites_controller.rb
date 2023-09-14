@@ -15,12 +15,27 @@ class FavouritesController < ApplicationController
     @favourite = Favourite.new
   end
 
+  # def create
+  #   @recipe = Recipe.find(params[:recipe_id])
+  #   @favourite = Favourite.new
+  #   @favourite.user = current_user
+  #   @favourite.recipe = @recipe
+  #   @favourite.save!
+  # end
+
   def create
-    @favourite = Favourite.new
+    @recipe = Recipe.find(params[:recipe_id])
+    @favourite = Favourite.new(user: current_user, recipe: @recipe)
     @favourite.user = current_user
-    @favourite.recipe = @recipe
-    @favourite.save!
+    respond_to do |format|
+      if @favourite.save!
+        format.json { render json: @favourite, status: :created }
+      else
+        format.json { render json: @favourite.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
 
   def destroy
     @favourite.destroy
