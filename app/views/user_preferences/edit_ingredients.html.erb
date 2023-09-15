@@ -1,52 +1,20 @@
-<html>
-  <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
 
-  <body>
-    <div class="container py-4">
-      <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
-        <div class="ingredient-form">
-          <input type="text" id="ingredient-input" class="ingredient-input" name="user[ingredient_list][]" placeholder="Any ingredients at home?">
-          <button type="button" id="add-ingredient" class="add-ingredient-button">Add</button>
-        </div>
+<div class="container py-4">
+  <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
+  <div class="ingredient-form" data-controller="ingredient">
+    <input type="text" id="ingredient-input" class="ingredient-input" name="user[ingredient_list][]" placeholder="Any ingredients at home?" data-ingredient-target="input">
+    <button type="button" id="add-ingredient" class="add-ingredient-button" data-action="click->ingredient#addIngredient">Add</button>
+  </div>
 
-        <!-- Display added ingredients -->
-        <div class="selected-ingredients">
-          <ul id="selected-ingredients-list" class="selected-ingredients-list">
-            <!-- Newly added ingredients will be displayed here via JavaScript -->
-          </ul>
-        </div>
+  <div class="selected-ingredients">
+    <ul id="selected-ingredients-list" class="selected-ingredients-list" data-ingredient-target="listItem">
+      <!-- Newly added ingredients will be displayed here via JavaScript -->
+    </ul>
+  </div>
 
-        <p> Press on the added ingredients to remove from list</p>
-        <%= link_to "Previous", edit_user_cuisines_path, method: :get %>
-        <%= f.submit "Save" %>
-        <%= link_to "Skip", user_recipes_path, method: :get %>
-      <% end %>
-    </div>
-
-    <script src="path/to/script.js"></script>
-    <script>
-      $(document).ready(function() {
-        $("#add-ingredient").click(function() {
-          var ingredient = $("#ingredient-input").val();
-          if (ingredient) {
-            var capitalizedIngredient = capitalizeFirstLetter(ingredient);
-            var listItem = $("<li>").text(capitalizedIngredient);
-            $("#selected-ingredients-list").append(listItem);
-            $("#ingredient-input").val("");
-          }
-        });
-
-        $("#selected-ingredients-list").on("click", "li", function() {
-          $(this).remove();
-        });
-
-        function capitalizeFirstLetter(str) {
-          return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-        }
-      });
-    </script>
-
-  </body>
-</html>
+    <p> Press on the added ingredients to remove from list</p>
+    <%= link_to "Previous", edit_user_cuisines_path, method: :get %>
+    <%= f.submit "Save" %>
+    <%= link_to "Skip", user_recipes_path, method: :get %>
+  <% end %>
+</div>
