@@ -1,17 +1,16 @@
-<div class="swiper">
+<div class="swiper" data-controller="swiper" data-swiper-love-button="love" data-swiper-nope-button="nope">
   <div class="swiper--status">
-    <i class="fa fa-remove"></i>
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-remove" id="nope"></i>
+    <i class="fa fa-heart" id="love"></i>
   </div>
   <div class="swiper--cards">
     <% @recipes.each do |recipe| %>
-      <div class="swiper--card swiper-slide" id="recipe-<%= recipe.id %>" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover;">
+    <div class="swiper--card swiper-slide" data-swiper-target="card" data-recipe-id="<%= recipe.id %>" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover;">
         <h2><%= recipe.name %></h2>
         <p><%= "#{recipe.time} mins" %></p>
         <div class="swiper--buttons">
-          <button class="nope-button" data-recipe-id="<%= recipe.id %>"><i class="fa fa-remove"></i></button>
-          <button class="love-button" data-recipe-id="<%= recipe.id %>"><i class="fa fa-heart"></i></button>
-        </div>
+          <button><i class="fa fa-remove"></i></button>
+          <button><i class="fa fa-heart"></i></button>
         <div class="d-flex flex-column" style="margin-top: 24px;">
           <%= link_to "See more details", user_recipe_path(recipe) %>
         </div>
@@ -20,63 +19,3 @@
   </div>
   <%= render "shared/navbar" %>
 </div>
-
-<script>
-  'use strict';
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var swiperContainer = document.querySelector('.swiper');
-    var allCards = document.querySelectorAll('.swiper--card');
-    var nopeButtons = document.querySelectorAll('.nope-button');
-    var loveButtons = document.querySelectorAll('.love-button');
-
-    function initCards(card, index) {
-      // Existing code for initializing cards
-    }
-
-    // Existing code for card swiping
-
-    function createButtonListener(love) {
-      return function (event) {
-        var card = event.target.closest('.swiper--card');
-        var recipeId = card.getAttribute('id').replace('recipe-', '');
-        var url = '<%= favourites_path %>';
-        var method = 'POST';
-
-        if (love) {
-          fetch(url, {
-            method: method,
-            body: JSON.stringify({ recipe_id: recipeId }),
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRF-Token': '<%= form_authenticity_token %>'
-            }
-          })
-            .then(response => response.json())
-            .then(data => {
-              console.log('favourite created:', data);
-              // Handle success or update UI
-            })
-            .catch(error => {
-              console.error('Error creating favourite:', error);
-              // Handle error or display error message
-            });
-        } else {
-          // Handle the "nope" button click if needed
-        }
-
-        card.classList.add('removed');
-        initCards();
-        event.preventDefault();
-      };
-    }
-
-    nopeButtons.forEach(function (button) {
-      button.addEventListener('click', createButtonListener(false));
-    });
-
-    loveButtons.forEach(function (button) {
-      button.addEventListener('click', createButtonListener(true));
-    });
-  });
-</script>
