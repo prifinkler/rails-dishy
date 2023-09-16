@@ -24,6 +24,12 @@ class UserRecipesController < ApplicationController
     end
   end
 
+  def toggle_favorite
+    @recipe = Recipe.find_by(id: params[:id])
+    raise
+    current_user.favorited?(@recipe) ? current_user.unfavorite(@recipe) : current_user.favorite(@recipe)
+  end
+
   def search
     @recipes = Recipe.all
     if params[:query].present?

@@ -53,7 +53,7 @@ gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
-
+gem 'acts_as_favoritor'
 gem "pg_search"
 
 group :development, :test do

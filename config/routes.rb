@@ -18,12 +18,15 @@ Rails.application.routes.draw do
   get 'user_recipes/search', to: 'user_recipes#search', as: 'search_user_recipes'
   # get 'user_recipes/:id/favourite', to: 'user_recipes#favourite', as: 'favourite_user_reci'
   # get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'  get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'
-  resources :favourites, only: %i[index show create destroy]
+  # resources :favorites, only: %i[index create destroy]
 
   # Route to show the user's recipes:
   resources :user_recipes, only: %i[index show edit update destroy] do
     collection do
-    get :search
+      get :search
+    end
+    member do
+      post 'toggle_favorite', to: "user_recipes#toggle_favorite"
+    end
   end
-end
 end

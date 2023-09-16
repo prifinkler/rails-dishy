@@ -1,11 +1,11 @@
 <h1>My Favourite Recipes</h1>
-<% @favourites.each do |favourite| %>
+<% @favorites.each do |favorite| %>
 
   <div>
-    <h2><%= favourite.recipe.name %></h2>
-    <p><%= favourite.recipe.description %></p>
+    <h2><%= favorite.recipe.name %></h2>
+    <p><%= favorite.recipe.description %></p>
 
-      <%= form_for favourite, url: favourite_path(favourite), method: :delete, html: { class: "remove-favorite-form" } do |f| %>
+      <%= form_for favorite, url: favorite_path(favorite), method: :delete, html: { class: "remove-favorite-form" } do |f| %>
       <%= f.submit "Remove", class: "remove-favorite-button" %>
       <% end %>
 
