@@ -2,8 +2,8 @@
 <% @favorites.each do |favorite| %>
 
   <div>
-    <h2><%= favorite.recipe.name %></h2>
-    <p><%= favorite.recipe.description %></p>
+    <h2><%= favorite.favoritable.name %></h2>
+    <p><%= favorite.favoritable.description %></p>
 
       <%= form_for favorite, url: favorite_path(favorite), method: :delete, html: { class: "remove-favorite-form" } do |f| %>
       <%= f.submit "Remove", class: "remove-favorite-button" %>
@@ -11,13 +11,13 @@
 
   <% end %>
     <div class="search-container">
-      <%= form_tag(search_user_recipes_path, method: :get, class: "search-form") do %>
+      <%= form_tag(search_recipes_path, method: :get, class: "search-form") do %>
       <%= text_field_tag(:query, params[:query], placeholder: "Search recipes...") %>
       <%= submit_tag("Search") %>
       <h2>Search for more Recipes</h2>
     </div>
   </div>
 <% end %>
-<%= link_to "Back to curated recipes", user_recipes_path, method: :get %>
+<%= link_to "Back to curated recipes", recipes_path, method: :get %>
 
 <%= render "shared/navbar" %>

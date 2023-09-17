@@ -1,4 +1,4 @@
-class UserRecipesController < ApplicationController
+class RecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
@@ -26,33 +26,24 @@ class UserRecipesController < ApplicationController
 
   def toggle_favorite
     @recipe = Recipe.find_by(id: params[:id])
-    raise
     current_user.favorited?(@recipe) ? current_user.unfavorite(@recipe) : current_user.favorite(@recipe)
-  end
 
-  def search
-    @recipes = Recipe.all
-    if params[:query].present?
-      @recipes = Recipe.search_by_name_and_time(params[:query])
-    else
-      @Recipes = Recipe.all
+    respond_to do |format|
+      format.html { redirect_to @recipe }
+      format.json { render json: { status: 'success', message: 'Favorite status toggled.' } }
     end
   end
 
-  # @search_results = Recipe.all
-
-  # if params[:cuisine].present?
-  #   @search_results = @search_results.where(cuisine: params[:cuisine])
-  # end
-
-  # if params[:dietary].present?
-  #   @search_results = @search_results.where(dietary: params[:dietary])
-  # end
-
-  # if params[:ingredient].present?
-  #   @search_results = @search_results.where(ingredient: params[:ingredient])
-  # end
-  # render 'search'
+def search
+  if params[:q].present?
+    @recipes = Recipe.search_by_name_and_time(params[:q])
+    if @recipes.empty?
+      flash.now[:notice] = "No recipes found matching '#{params[:q]}'"
+    end
+  else
+    @recipes = []
+  end
+end
 
   def show
     @recipe = Recipe.find(params[:id])

@@ -8,22 +8,18 @@
       <div class="swiper--card swiper--buttons" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover;">
         <h2><%= recipe.name %></h2>
         <p><%= "#{recipe.time} mins" %></p>
+        <p><%= "#{recipe.ingredients.count} ingredients" %></p>
+        <%= link_to "See more details", recipe_path(recipe), style: "margin-top: 24px;" %>
         <div class="swiper--buttons">
           <button class="nope"><i class="fa fa-remove"></i></button>
-          <%# <button class="love"><i class="fa fa-heart"></i></button> %>
-          <%= link_to "like", toggle_favorite_user_recipe_path(recipe), remote: true, method: :post, class: 'toggle-favorite'  %>
+          <button class="love"><i class="fa fa-heart"></i></button>
         </div>
-        <div>
-        </div>
-      </div>
-      <div class="d-flex flex-column" style="margin-top: 24px;">
-          <%= link_to "See more details", user_recipe_path(recipe) %>
-          <%= link_to "Edit preferences", edit_user_cuisines_path %>
+        <%= link_to "like", toggle_favorite_recipe_path(recipe), remote: true, method: :post %>
       </div>
     <% end %>
   </div>
 </div>
-<%# <%= render "shared/navbar" %>
+<%= render "shared/navbar" %>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
