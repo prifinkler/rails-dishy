@@ -10,5 +10,5 @@ application.register("hello", HelloController)
 // import SwiperController from "./swiper_controller";
 // application.register("swiper", SwiperController);
 
-import IngredientController from "./ingredient_controller"
-application.register("ingredient", IngredientController);
+// import IngredientController from "./ingredient_controller"
+// application.register("ingredient", IngredientController);
