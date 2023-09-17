@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       get :search
     end
     member do
-      post 'toggle_favorite'
+      post 'toggle_favorite', to: "recipes#toggle_favorite"
     end
   end
 

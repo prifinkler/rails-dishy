@@ -1,6 +1,15 @@
 var recipeId = '<%= @recipe.id%>'
-function toggleLikeButton(recipeId, innerHTML) {
+
+function toggleLikeButton(recipeId, favoritedRecipe) {
   let likeButton = document.querySelector(`.like-icon[data-id='${recipeId}']`)
   likeButton.classList.toggle('red');
+  if (likeButton.classList.contains('red')) {
+    const favoriteList = document.querySelector('.favorites');
+    favoriteList.insertAdjacentHTML('beforeend', favoritedRecipe)
+  }
+  else {
+    document.querySelector(`.favorite[data-id='${recipeId}']`).remove()
+  }
 }
-toggleLikeButton(recipeId);
+
+toggleLikeButton(recipeId, '<%= j render "recipes/recipe", recipe: @recipe %>');

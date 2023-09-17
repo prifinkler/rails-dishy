@@ -2,9 +2,9 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    if current_user.cuisines.blank? && current_user.dietaries.blank? && current_user.ingredients.blank?
-      redirect_to edit_user_cuisines_path
-    end
+    # if current_user.cuisines.blank? && current_user.dietaries.blank? && current_user.ingredients.blank?
+      # redirect_to edit_user_cuisines_path
+    # end
 
     @recipes = Recipe.all
     if current_user.cuisines
@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
   end
 
   def toggle_favorite
-    @recipe = Recipe.find_by(id: params[:id])
+    @recipe = Recipe.find(params[:id])
     current_user.favorited?(@recipe) ? current_user.unfavorite(@recipe) : current_user.favorite(@recipe)
 
     respond_to do |format|
@@ -34,16 +34,16 @@ class RecipesController < ApplicationController
     end
   end
 
-def search
-  if params[:q].present?
-    @recipes = Recipe.search_by_name_and_time(params[:q])
-    if @recipes.empty?
-      flash.now[:notice] = "No recipes found matching '#{params[:q]}'"
+  def search
+    if params[:q].present?
+      @recipes = Recipe.search_by_name_and_time(params[:q])
+      if @recipes.empty?
+        flash.now[:notice] = "No recipes found matching '#{params[:q]}'"
+      end
+    else
+      @recipes = []
     end
-  else
-    @recipes = []
   end
-end
 
   def show
     @recipe = Recipe.find(params[:id])
