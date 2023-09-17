@@ -36,7 +36,7 @@ class UserPreferencesController < ApplicationController
   def update_dietaries
     @user = current_user
     if @user.update(user_dietaries)
-      redirect_to user_recipes_path
+      redirect_to recipes_path
     else
       render :edit_dietaries
     end

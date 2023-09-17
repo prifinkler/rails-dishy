@@ -2,9 +2,11 @@ class Recipe < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_name_and_time, against: %i[name time], using: { tsearch: { prefix: true }}
 
-  has_many :users, through: :favourites
-  has_many :favourites, dependent: :destroy
-  has_many :users, through: :favourites
+  acts_as_favoritable
+
+  # has_many :users, through: :favorites
+  # has_many :favorites, dependent: :destroy
+  # has_many :users, through: :favorites
 
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients

@@ -1,7 +1,7 @@
 <div class="container py-4 pb-20" style="background-image: linear-gradient(rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 75%), url('<%= asset_path(@recipe.photo_url) %>'); background-size: cover;">
   <div class="container recipe-card py-4">
   <h3><%= @recipe.name%></h3>
-    <%= link_to "Back to recipes", user_recipes_path, method: :get %>
+    <%= link_to "Back to recipes", recipes_path, method: :get %>
     <p><strong><%= @recipe.description %></strong></p>
 
     <h5>Time: <%= "#{@recipe.time} mins" %></h5>
@@ -25,6 +25,6 @@
       <% end %>
     </ul>
     <p><%= @recipe.instruction%></p>
-    <%= link_to "Back to recipes", user_recipes_path, method: :get %>
+    <%= link_to "Back to recipes", recipes_path, method: :get %>
   <%= render "shared/navbar" %>
 </div>

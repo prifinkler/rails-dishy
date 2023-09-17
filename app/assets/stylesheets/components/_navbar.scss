@@ -1,14 +1,17 @@
-.navbar-lewagon {
+.navbar-dishy {
   justify-content: space-between;
-  background: none;
+  // background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4));
+  background: transparent;
+  position: fixed;
+  z-index: 999;
   overflow: hidden;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-dishy .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-dishy .navbar-brand img {
   width: 40px;
 }
 
@@ -19,5 +22,5 @@
 .edit-pref {
   font-size: 30px;
   opacity: 0.5;
-  color: var(--bs-navbar-color);
+  color: $white;
 }

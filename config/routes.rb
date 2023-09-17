@@ -15,15 +15,20 @@ Rails.application.routes.draw do
   get 'user_preferences/edit_dietaries', to: 'user_preferences#edit_dietaries', as: 'edit_user_dietaries'
   patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietaries'
 
-  get 'user_recipes/search', to: 'user_recipes#search', as: 'search_user_recipes'
-  # get 'user_recipes/:id/favourite', to: 'user_recipes#favourite', as: 'favourite_user_reci'
-  # get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'  get 'user_recipes/:id/unfavourite', to: 'user_recipes#unfavourite', as: 'unfavourite_user_recipe'
-  resources :favourites, only: %i[index show create destroy]
+  get 'recipes/search', to: 'recipes#search', as: 'search_recipes'
+  # get 'recipes/:id/favourite', to: 'recipes#favourite', as: 'favourite_recipes'
+  # get 'recipes/:id/unfavourite', to: 'recipes#unfavourite', as: 'unfavourite_recipe'  get 'recipes/:id/unfavourite', to: 'recipes#unfavourite', as: 'unfavourite_recipe'
 
   # Route to show the user's recipes:
-  resources :user_recipes, only: %i[index show edit update destroy] do
+  resources :recipes, only: %i[index show] do
     collection do
-    get :search
+      get :search
+    end
+    member do
+      post 'toggle_favorite', to: "recipes#toggle_favorite"
+    end
   end
-end
+
+  resources :favorites, only: %i[index create destroy]
+
 end
