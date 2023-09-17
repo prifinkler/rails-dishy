@@ -5,7 +5,7 @@
   </div>
   <div class="swiper--cards">
     <% @recipes.each do |recipe| %>
-      <div class="swiper--card swiper--buttons" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover;">
+      <div class="swiper--card swiper--buttons" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover;" data-recipe-id="<%= recipe.id %>">
         <h2><%= recipe.name %></h2>
         <p><%= "#{recipe.time} mins" %></p>
         <p><%= "#{recipe.ingredients.count} ingredients" %></p>
@@ -23,7 +23,6 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-
 <script>
 'use strict';
 
@@ -31,7 +30,6 @@ var swiperContainer = document.querySelector('.swiper');
 var allCards = document.querySelectorAll('.swiper--card');
 var nope = document.getElementById('nope');
 var love = document.getElementById('love');
-
 
 function initCards(card, index) {
   var newCards = document.querySelectorAll('.swiper--card:not(.removed)');
@@ -75,6 +73,32 @@ allCards.forEach(function (el) {
 
     var moveOutWidth = document.body.clientWidth;
     var keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
+
+    if (!keep) {
+      // If the user swipes right (likes the recipe), call the toggle_favorite action
+      if (event.deltaX > 0) {
+        var recipeId = el.getAttribute('data-recipe-id');
+        if (recipeId) {
+          // Make an AJAX request to toggle the favorite status
+          fetch('/recipes/' + recipeId + '/toggle_favorite', {
+            method: 'POST',
+            headers: {
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+              'Content-Type': 'application/json'
+            },
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.status === 'success') {
+              // The recipe has been favorited/unfavorited successfully
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+        }
+      }
+    }
 
     event.target.classList.toggle('removed', !keep);
 
