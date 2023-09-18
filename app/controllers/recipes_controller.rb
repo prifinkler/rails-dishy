@@ -47,6 +47,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    # session[:last_viewed_recipe_id] = @recipe.id
+    # puts "Last Viewed Recipe ID: #{session[:last_viewed_recipe_id]}" #  debugging
   end
 
   private

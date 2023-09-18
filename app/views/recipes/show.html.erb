@@ -1,11 +1,12 @@
 <div class="container py-4 pb-20" style="background-image: linear-gradient(rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 75%), url('<%= asset_path(@recipe.photo_url) %>'); background-size: cover;">
   <div class="container recipe-card py-4">
   <h3><%= @recipe.name%></h3>
+    <%# <% if session[:last_viewed_recipe_id].present? %>
+      <%# <%= button_tag "Back to Last Recipe", id: "back-to-last-recipe", "data-last-viewed-recipe-id": session[:last_viewed_recipe_id] %>
+    <%# <% end %>
     <%= link_to "Back to recipes", recipes_path, method: :get %>
     <p><strong><%= @recipe.description %></strong></p>
-
     <h5>Time: <%= "#{@recipe.time} mins" %></h5>
-
     <h5>Ingredients</h5>
     <ul>
       <% @recipe.ingredients.each do |ingredient| %>
@@ -25,6 +26,21 @@
       <% end %>
     </ul>
     <p><%= @recipe.instruction%></p>
-    <%= link_to "Back to recipes", recipes_path, method: :get %>
   <%= render "shared/navbar" %>
 </div>
+
+<%# <script>
+document.addEventListener('DOMContentLoaded', function () {
+  var backToLastRecipeButton = document.getElementById('back-to-last-recipe');
+  console.log(backToLastRecipeButton);
+
+  var lastViewedRecipeId = backToLastRecipeButton.getAttribute('data-last-viewed-recipe-id');
+  console.log(lastViewedRecipeId);
+
+    backToLastRecipeButton.addEventListener('click', function () {
+      if (lastViewedRecipeId) {
+        window.location.href = '/recipes/' + lastViewedRecipeId;
+      }
+    });
+});
+</script> %>
