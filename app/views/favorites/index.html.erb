@@ -1,16 +1,19 @@
-<div class="container py-4">
-  <h1>My Favourite Recipes</h1>
+<div class="container-fv favebg py-4">
+  <h1>Your Likes</h1>
+  <div class="cards py-4">
   <% @favorites.each do |favorite| %>
-    <div data-id="<%= favorite.id %>">
+    <div data-id="<%= favorite.id %>"; class="card-fv"; style="background-image: url('<%= asset_path(favorite.photo_url) %>');">
       <h2><%= favorite.name %></h2>
       <p><%= favorite.description %></p>
-
       <%= form_for favorite, url: favorite_path(favorite), method: :delete, html: { class: "remove-favorite-form" } do |f| %>
         <%= f.hidden_field :id %>
         <%= f.submit "Remove", class: "remove-favorite-button" %>
+        <%= link_to "See more details", recipe_path(favorite), style: "margin-top: 24px;" %>
       <% end %>
     <% end %>
+    </div>
   </div>
   <%= link_to "Back to curated recipes", recipes_path, method: :get %>
+  
 </div>
 <%= render "shared/navbar" %>
