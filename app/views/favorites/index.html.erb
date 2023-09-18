@@ -1,13 +1,16 @@
-<div class="container py-4">
-  <h1>My Favourite Recipes</h1>
+<div class="container-fv favebg py-4">
+  <h1>Your Likes</h1>
+  <div class="cards py-4">
   <% @favorites.each do |favorite| %>
-    <div data-id="<%= favorite.id %>" class="favorite-recipe">
+    <div data-id="<%= favorite.id %>"; class="card-fv"; style="background-image: url('<%= asset_path(favorite.photo_url) %>');">
       <h2><%= favorite.name %></h2>
       <p><%= favorite.description %></p>
       <button class="remove-favorite-button" data-favorite-id="<%= favorite.id %>">Unfavorite</button>
+    <% end %>
     </div>
-  <% end %>
-  <%= link_to "Back to curated recipes", recipes_path, method: :get %>
+  </div>
+<%= link_to "Back to curated recipes", recipes_path, method: :get %>
+  
 </div>
 <%= render "shared/navbar" %>
 
