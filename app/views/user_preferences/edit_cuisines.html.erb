@@ -1,10 +1,14 @@
-<div class="container py-4">
-  <%= simple_form_for(@user, url: update_user_cuisines_path, method: :patch) do |f| %>
-    <%= f.association :cuisines, collection: Cuisine.all,
-                      as: :check_boxes,
-                      input_html: { class: "tag-selector" },
-                      item_wrapper_class: 'tag-item' %>
-    <%= f.submit "Save"  %>
-    <%= link_to "Skip", edit_user_ingredients_path, method: :get %>
-  <% end %>
+<div class="container py-4 edit-pref-bg">
+  <div class="edit-pref-center">
+    <h2>Cuisines</h2>
+    <%= simple_form_for(@user, url: update_user_cuisines_path, method: :patch) do |f| %>
+      <%= f.association :cuisines, collection: Cuisine.all,
+                        as: :check_boxes,
+                        input_html: { class: "tag-selector" },
+                        item_wrapper_class: 'tag-item',
+                        legend_tag: false %>
+      <%= f.submit "Save", class: "btn btn-primary"  %>
+      <%= link_to "Skip", edit_user_ingredients_path, method: :get, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>

@@ -5,15 +5,43 @@
     <div data-id="<%= favorite.id %>"; class="card-fv"; style="background-image: url('<%= asset_path(favorite.photo_url) %>');">
       <h2><%= favorite.name %></h2>
       <p><%= favorite.description %></p>
-      <%= form_for favorite, url: favorite_path(favorite), method: :delete, html: { class: "remove-favorite-form" } do |f| %>
-        <%= f.hidden_field :id %>
-        <%= f.submit "Remove", class: "remove-favorite-button" %>
-        <%= link_to "See more details", recipe_path(favorite), style: "margin-top: 24px;" %>
-      <% end %>
+      <button class="remove-favorite-button" data-favorite-id="<%= favorite.id %>">Unfavorite</button>
     <% end %>
     </div>
   </div>
   <%= link_to "Back to curated recipes", recipes_path, method: :get %>
-  
 </div>
 <%= render "shared/navbar" %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var removeFavoriteButtons = document.querySelectorAll('.remove-favorite-button');
+
+  removeFavoriteButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var favoriteId = button.getAttribute('data-favorite-id');
+      if (favoriteId) {
+        // Make an AJAX request to remove the favorite
+        fetch('/favorites/' + favoriteId, {
+          method: 'DELETE',
+          headers: {
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+          },
+        })
+        .then(function (response) {
+          if (response.status === 200) {
+            // Remove the favorite from the DOM
+            var favoriteRecipe = document.querySelector('.favorite-recipe[data-id="' + favoriteId + '"]');
+            if (favoriteRecipe) {
+              favoriteRecipe.remove();
+            }
+          }
+        })
+        .catch(function (error) {
+          console.error('Error:', error);
+        });
+      }
+    });
+  });
+});
+</script>
