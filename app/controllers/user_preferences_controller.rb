@@ -14,8 +14,6 @@ class UserPreferencesController < ApplicationController
     end
   end
 
-
-
   def edit_ingredients
     @user = current_user
   end

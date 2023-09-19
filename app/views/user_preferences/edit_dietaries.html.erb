@@ -1,13 +1,17 @@
-<div class="container py-4">
-  <%= simple_form_for(@user, url: update_user_dietaries_path, method: :patch) do |f| %>
-    <%= f.association :dietaries, collection: Dietary.all,
-                      as: :check_boxes,
-                      input_html: { class: "tag-selector" },
-                      item_wrapper_class: 'tag-item',
-                      label_method: :dietary_type,
-                      value_method: :id %>
-    <%= link_to "Previous", edit_user_ingredients_path, method: :get %>
-    <%= f.submit "Save" %>
-    <%= link_to "Skip", edit_user_dietaries_path, method: :get %>
-  <% end %>
+<div class="container py-4 edit-pref-bg">
+  <div class="edit-pref-center">
+      <h2>Any dietary requirements?</h2>
+      <%= simple_form_for(@user, url: update_user_dietaries_path, method: :patch) do |f| %>
+        <%= f.association :dietaries, collection: Dietary.all,
+                          as: :check_boxes,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item',
+                          label_method: :dietary_type,
+                          value_method: :id,
+                          legend_tag: false %>
+        <%= link_to "Previous", edit_user_ingredients_path, method: :get, class: "btn btn-primary" %>
+        <%= f.submit "Save", class: "btn btn-primary"  %>
+        <%= link_to "Skip", recipes_path, method: :get, class: "btn btn-primary" %>
+      <% end %>
+  </div>
 </div>
