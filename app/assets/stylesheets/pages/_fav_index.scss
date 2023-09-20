@@ -1,7 +1,6 @@
 .favebg {
   // background-image:  linear-gradient(rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 75%), url("Flour.jpg");
   background-size: cover;
-  height: 100vh;
   color: $white;
   border: none;
   background-color: $gray;
@@ -15,26 +14,32 @@
 }
 
 .card-fv {
-  // background-size: cover;
-  background-position: center;
+  display: flex;
+  flex-direction: column;
+  width: 95vw;
+  padding: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  // background-size: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.cards-fv {
+  flex-grow: 1;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  color: $light-gray;
-  margin: 0px 12px;
-  margin-bottom: none;
-  // top/bottom left/right
+  align-items: flex-end;
+  grid-template-columns: 1fr;
+  gap: 25px;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
-}
 
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .cards {
+//     grid-template-columns: 1fr;
+//   }
+// }
