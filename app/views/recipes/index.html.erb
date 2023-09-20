@@ -17,10 +17,10 @@
       </div>
     <% end %>
   </div>
+</div>
 <%= render "shared/navbar" %>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<%# <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script> %>
 <script>
 'use strict';
 
@@ -88,7 +88,6 @@ allCards.forEach(function (el) {
           .then(response => response.json())
           .then(data => {
             if (data.status === 'success') {
-              // The recipe has been favorited/unfavorited successfully
             }
           })
           .catch(error => {
@@ -99,7 +98,6 @@ allCards.forEach(function (el) {
     }
 
     event.target.classList.toggle('removed', !keep);
-    console.log('Removing card');
 
     if (keep) {
       event.target.style.transform = '';
@@ -141,10 +139,10 @@ function createButtonListener(love) {
   };
 }
 
-// var nopeListener = createButtonListener(false);
-// var loveListener = createButtonListener(true);
+var nopeListener = createButtonListener(false);
+var loveListener = createButtonListener(true);
 
-// nope.addEventListener('click', nopeListener);
-// love.addEventListener('click', loveListener);
+nope.addEventListener('click', nopeListener);
+love.addEventListener('click', loveListener);
 
 </script>
