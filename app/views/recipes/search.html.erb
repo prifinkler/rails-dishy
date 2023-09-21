@@ -1,4 +1,4 @@
-<div class="container py-4">
+<div class="container pt-4">
 <h2>Search</h2>
   <form action="<%= search_recipes_path %>" method="GET" class="mb-3">
     <div class="input-group">
@@ -8,19 +8,29 @@
       </button>
     </div>
   </form>
-
-  <% @recipes.each do |recipe| %>
-    <div class="text-center">
-      <img src="<%= asset_path(recipe.photo_url) %>" >
-        <%= button_to favorites_path(recipe_id: recipe.id) do %>
-        <i class="far fa-heart"></i>
-      <% end %>
-      <%= link_to recipes_path(recipe) do %>
-        <i class="far fa-circle-xmark"></i>
-      <% end %>
-      <h2><%= recipe.name %></h2>
-      <%= link_to "See more details", recipe_path(recipe) %>
-    </div>
-  <% end %>
 </div>
+
+<div class="swiper">
+  <div class="swiper--status">
+    <i id="nope" class="fa fa-remove"></i>
+    <i id="love" class="fa fa-heart"></i>
+  </div>
+  <div class="swiper--cards">
+    <% @recipes.each do |recipe| %>
+      <div class="swiper--card swiper--buttons d-flex flex-column" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover; padding-bottom:80px;" data-recipe-id="<%= recipe.id %>">
+        <div class="align-items-start mb-auto">
+          <h2><%= recipe.name %></h2>
+          <p><%= "#{recipe.time} mins" %></p>
+          <p><%= "#{recipe.ingredients.count} ingredients" %></p>
+        </div>
+        <div class="align-items-end">
+          <%= link_to "See more details", recipe_path(recipe) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
 <%= render "shared/navbar" %>
+<%= render "shared/swiper" %>
