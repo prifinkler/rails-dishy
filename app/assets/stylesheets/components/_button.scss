@@ -1,5 +1,5 @@
 .button-8 {
-  background-color: $red;
+  background-color: $primary;
   border-radius: 50px;
   border: 1px solid $red;
   box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
@@ -13,4 +13,5 @@
   position: relative;
   text-align: center;
   text-decoration: none;
+  padding: 8px 50px;
 }
