@@ -24,27 +24,22 @@
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>;
-
 <script>
   $(document).ready(function() {
     $('.added-ingredients-message').hide();
 
     $('.add-ingredient-button').click(function() {
-      console.log('Button clicked');
-      var ingredient = $('.ingredient-input').val();
-      if (ingredient.trim() !== '') {
+      // console.log('Button clicked');
+      var ingredient = $('.ingredient-input').val().trim();
+      if (ingredient !== '') {
         ingredient = capitalizeFirstLetter(ingredient);
 
-        // Create a new list item and append it to the selected-ingredients-list
         var listItem = $('<li>').html('<i class="fas fa-star"></i> ' + ingredient);
         $('#selected-ingredients-list').append(listItem);
-
         $('.ingredient-input').val('');
-
         $('.added-ingredients-message').show();
       }
-    })
+    });
 
     $("#selected-ingredients-list").on("click", "li", function() {
       $(this).remove();
