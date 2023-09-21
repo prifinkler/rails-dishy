@@ -17,8 +17,6 @@ class Recipe < ApplicationRecord
   has_many :recipe_dietaries, dependent: :destroy
   has_many :dietaries, through: :recipe_dietaries
 
-  has_many :favorites, dependent: :destroy
-
   validates :name, :instruction, :description, presence: true, length: { minimum: 2 }
   validates :time, presence: true, numericality: { greater_than_or_equal_to: 1 }
   validates :photo_url, presence: true
