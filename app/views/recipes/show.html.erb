@@ -4,7 +4,7 @@
     <%# <% if session[:last_viewed_recipe_id].present? %>
       <%# <%= button_tag "Back to Last Recipe", id: "back-to-last-recipe", "data-last-viewed-recipe-id": session[:last_viewed_recipe_id] %>
     <%# <% end %>
-    <%= link_to "Back to recipes", recipes_path, method: :get %>
+    <%= link_to "Back to recipes", recipes_path, method: :get, class: "button-9" %>
     <p><strong><%= @recipe.description %></strong></p>
     <h5>Time: <%= "#{@recipe.time} mins" %></h5>
     <h5>Ingredients</h5>
@@ -25,6 +25,7 @@
           <li><%= dietary.dietary_type %></li>
       <% end %>
     </ul>
+    <h5>Instructions</h5>
     <p><%= @recipe.instruction%></p>
   <%= render "shared/navbar" %>
 </div>
