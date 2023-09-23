@@ -36,7 +36,11 @@ class RecipesController < ApplicationController
 
   def search
     if params[:q].present?
-      @recipes = Recipe.search_by_name_and_time(params[:q])
+      recipes_by_name_and_time = Recipe.search_by_name_and_time(params[:q])
+      recipes_by_ingredients = Recipe.search_by_ingredients(params[:q])
+      recipes_by_cuisines = Recipe.search_by_cuisines(params[:q])
+
+      @recipes = recipes_by_name_and_time + recipes_by_ingredients + recipes_by_cuisines
       if @recipes.empty?
         flash.now[:notice] = "No recipes found matching '#{params[:q]}'"
       end
