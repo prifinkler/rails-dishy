@@ -47,7 +47,7 @@ allCards.forEach(function (el) {
     swiperContainer.classList.remove('swiper_nope');
 
     var moveOutWidth = document.body.clientWidth * 2;
-    console.log(moveOutWidth);
+    // console.log(moveOutWidth);
     var keep = Math.abs(event.deltaX) < 20 || Math.abs(event.velocityX) < 0.5;
 
     if (!keep) {
@@ -92,7 +92,14 @@ allCards.forEach(function (el) {
       initCards();
     }
   });
-});
 
-
+    el.addEventListener('click', function () {
+      // console.log('has been clicked');
+      var recipeId = el.getAttribute('data-recipe-id');
+      // console.log(recipeId);
+      if (recipeId) {
+        window.location.href = '/recipes/' + recipeId;
+      }
+    });
+  });
 </script>
