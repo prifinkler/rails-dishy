@@ -6,8 +6,7 @@
         <h2><%= favorite.name %></h2>
         <p><%= favorite.description %></p>
         <div>
-        <button class="remove-favorite-button" data-favorite-id="<%= favorite.id %>">Unfavorite</button>
-        <%= link_to "See more details", recipe_path(favorite) %>
+        <%= link_to "See recipe", recipe_path(favorite), class: "button-9" %>
         </div>
     </div>
     <% end %>
