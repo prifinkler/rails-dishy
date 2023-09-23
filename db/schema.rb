@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_16_140041) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_23_100555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,15 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_140041) do
     t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
     t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor"
     t.index ["scope"], name: "index_favorites_on_scope"
-  end
-
-  create_table "favourites", force: :cascade do |t|
-    t.bigint "recipe_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_favourites_on_recipe_id"
-    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -135,8 +126,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_16_140041) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "favourites", "recipes"
-  add_foreign_key "favourites", "users"
   add_foreign_key "recipe_cuisines", "cuisines"
   add_foreign_key "recipe_cuisines", "recipes"
   add_foreign_key "recipe_dietaries", "dietaries"
