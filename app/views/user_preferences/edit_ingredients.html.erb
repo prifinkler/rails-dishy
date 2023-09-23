@@ -1,56 +1,56 @@
-<div class="container py-4 edit-pref-bg">
-  <div class="edit-pref-center">
-    <h2>Have you got any ingredients at home you would like to use?</h2>
-    <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
-      <div class="ingredient-form form-group">
-        <%= f.input %>
-        <input type="text" id="ingredient-input" class="ingredient-input form-control string required" name="user[ingredient_list][]" placeholder="Ingredients" style="width: 80%;">
-        <button type="button" id="add-ingredient" class="add-ingredient-button btn btn-flat"
-        </button>
-      </div>
+# <div class="container py-4 edit-pref-bg">
+#   <div class="edit-pref-center">
+#     <h2>Have you got any ingredients at home you would like to use?</h2>
+#     <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
+#       <div class="ingredient-form form-group">
+#         <%= f.input %>
+#         <input type="text" id="ingredient-input" class="ingredient-input form-control string required" name="user[ingredient_list][]" placeholder="Ingredients" style="width: 80%;">
+#         <button type="button" id="add-ingredient" class="add-ingredient-button btn btn-flat"
+#         </button>
+#       </div>
 
-      <div class="selected-ingredients">
-        <ul id="selected-ingredients-list" class="selected-ingredients-list" style="margin-bottom: 32px;">
-          <!-- Newly added ingredients will be displayed here via JavaScript -->
-        </ul>
-      </div>
+#       <div class="selected-ingredients">
+#         <ul id="selected-ingredients-list" class="selected-ingredients-list" style="margin-bottom: 32px;">
+#           <!-- Newly added ingredients will be displayed here via JavaScript -->
+#         </ul>
+#       </div>
 
-      <p class="added-ingredients-message" style="width: 70%;"><small>Press on the added ingredients to remove from the list</small></p>
+#       <p class="added-ingredients-message" style="width: 70%;"><small>Press on the added ingredients to remove from the list</small></p>
 
-      <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "btn btn-primary"  %>
-      <%= f.submit "Save", class: "btn btn-primary"  %>
-      <%= link_to "Skip", edit_user_dietaries_path, method: :get, class: "btn btn-primary"  %>
-    <% end %>
-  </div>
-</div>
+#       <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "btn btn-primary"  %>
+#       <%= f.submit "Save", class: "btn btn-primary"  %>
+#       <%= link_to "Skip", edit_user_dietaries_path, method: :get, class: "btn btn-primary"  %>
+#     <% end %>
+#   </div>
+# </div>
 
-<script>
-  $(document).ready(function() {
-    $('.added-ingredients-message').hide();
+# <script>
+#   $(document).ready(function() {
+#     $('.added-ingredients-message').hide();
 
-    $('.add-ingredient-button').click(function() {
-      console.log('Button clicked');
-      var ingredient = $('.ingredient-input').val().trim();
-      if (ingredient !== '') {
-        ingredient = capitalizeFirstLetter(ingredient);
+#     $('.add-ingredient-button').click(function() {
+#       console.log('Button clicked');
+#       var ingredient = $('.ingredient-input').val().trim();
+#       if (ingredient !== '') {
+#         ingredient = capitalizeFirstLetter(ingredient);
 
-        var listItem = $('<li>').html('<i class="fas fa-star"></i> ' + ingredient);
-        $('#selected-ingredients-list').append(listItem);
-        $('.ingredient-input').val('');
-        $('.added-ingredients-message').show();
-      }
-    });
+#         var listItem = $('<li>').html('<i class="fas fa-star"></i> ' + ingredient);
+#         $('#selected-ingredients-list').append(listItem);
+#         $('.ingredient-input').val('');
+#         $('.added-ingredients-message').show();
+#       }
+#     });
 
-    $("#selected-ingredients-list").on("click", "li", function() {
-      $(this).remove();
+#     $("#selected-ingredients-list").on("click", "li", function() {
+#       $(this).remove();
 
-      if ($('#selected-ingredients-list li').length === 0) {
-        $('.added-ingredients-message').hide();
-      }
-    });
+#       if ($('#selected-ingredients-list li').length === 0) {
+#         $('.added-ingredients-message').hide();
+#       }
+#     });
 
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-    }
-  });
-</script>
+#     function capitalizeFirstLetter(string) {
+#       return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+#     }
+#   });
+# </script>
