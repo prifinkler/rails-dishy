@@ -4,10 +4,6 @@ class Recipe < ApplicationRecord
 
   acts_as_favoritable
 
-  # has_many :users, through: :favorites
-  # has_many :favorites, dependent: :destroy
-  # has_many :users, through: :favorites
-
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
 

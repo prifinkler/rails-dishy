@@ -1,5 +1,3 @@
-
-<%# <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script> %>
 <script>
 'use strict';
 
@@ -48,8 +46,9 @@ allCards.forEach(function (el) {
     swiperContainer.classList.remove('swiper_love');
     swiperContainer.classList.remove('swiper_nope');
 
-    var moveOutWidth = document.body.clientWidth;
-    var keep = Math.abs(event.deltaX) < 80 || Math.abs(event.velocityX) < 0.5;
+    var moveOutWidth = document.body.clientWidth * 2;
+    console.log(moveOutWidth);
+    var keep = Math.abs(event.deltaX) < 20 || Math.abs(event.velocityX) < 0.5;
 
     if (!keep) {
       // If the user swipes right (likes the recipe), call the toggle_favorite action
@@ -95,33 +94,5 @@ allCards.forEach(function (el) {
   });
 });
 
-function createButtonListener(love) {
-  return function (event) {
-    var cards = document.querySelectorAll('.swiper--card:not(.removed)');
-    var moveOutWidth = document.body.clientWidth * 1.5;
-
-    if (!cards.length) return false;
-
-    var card = cards[0];
-
-    card.classList.add('removed');
-
-    if (love) {
-      card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
-    } else {
-      card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
-    }
-
-    initCards();
-
-    event.preventDefault();
-  };
-}
-
-var nopeListener = createButtonListener(false);
-var loveListener = createButtonListener(true);
-
-nope.addEventListener('click', nopeListener);
-love.addEventListener('click', loveListener);
 
 </script>
