@@ -2,15 +2,15 @@
   <div class="edit-pref-center">
     <h2>Have you got any ingredients at home you would like to use?</h2>
     <%= simple_form_for(@user, url: update_user_ingredients_path, method: :patch) do |f| %>
-      <div class="ingredient-form form-group" data-controller="ingredient">
-        <input type="text" id="ingredient-input" class="ingredient-input form-control string required" name="user[ingredient_list][]" placeholder="Ingredients" data-ingredient-target="input" style="width: 80%;">
+      <div class="ingredient-form form-group">
+        <%= f.input %>
+        <input type="text" id="ingredient-input" class="ingredient-input form-control string required" name="user[ingredient_list][]" placeholder="Ingredients" style="width: 80%;">
         <button type="button" id="add-ingredient" class="add-ingredient-button btn btn-flat"
-          data-action="click->ingredient#addIngredient">Add
         </button>
       </div>
 
       <div class="selected-ingredients">
-        <ul id="selected-ingredients-list" class="selected-ingredients-list" data-ingredient-target="listItem" style="margin-bottom: 32px;">
+        <ul id="selected-ingredients-list" class="selected-ingredients-list" style="margin-bottom: 32px;">
           <!-- Newly added ingredients will be displayed here via JavaScript -->
         </ul>
       </div>
@@ -29,7 +29,7 @@
     $('.added-ingredients-message').hide();
 
     $('.add-ingredient-button').click(function() {
-      // console.log('Button clicked');
+      console.log('Button clicked');
       var ingredient = $('.ingredient-input').val().trim();
       if (ingredient !== '') {
         ingredient = capitalizeFirstLetter(ingredient);
