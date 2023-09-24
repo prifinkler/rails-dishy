@@ -105,10 +105,19 @@ allCards.forEach(function (el) {
 </script>
 
 <script>
-  window.onload = () => {
-    document.querySelector(".path").style.animation = "swipe-dot 2s 0.5s infinite";
+  function applyAnimationToCardAtIndex(index) {
+    const cards = document.querySelectorAll('.swiper--card');
 
-    document.querySelector(".hand-icon").style.animation = "swipe-hand 2s infinite";
-
+    cards.forEach((card, cardIndex) => {
+      if (cardIndex === index) {
+        card.querySelector(".path").style.animation = "swipe-dot 2s 0.5s infinite";
+        card.querySelector(".hand-icon").style.animation = "swipe-hand 2s infinite";
+      } else {
+        const handIcon = card.querySelector(".hand-icon");
+        handIcon.style.display = "none";
+      }
+    });
   }
+
+  applyAnimationToCardAtIndex(0);
 </script>
