@@ -67,9 +67,9 @@
 
 .swiper--card {
   display: inline-block;
-  width:95vw;
+  width:95%;
   max-width: 400px;
-  height: 90vh;
+  height: 90%;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -102,6 +102,10 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
+.details {
+  margin-bottom: 40px !important;
+}
+
 .hand {
   display: flex;
   justify-content: center;
@@ -114,8 +118,8 @@
   background: rgba(149, 147, 241, 0.5);
   border-radius: 40px;
   visibility: hidden;
-  left: 50%;
-  top: 68%;
+  left: 53%;
+  top: 69%;
 }
 
 .hand-icon {
