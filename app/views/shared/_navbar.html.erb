@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-dishy navbar-dark fixed-bottom">
+<div class="navbar navbar-dishy navbar-dark fixed-bottom">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "temp_logo.jpg" %>
@@ -21,20 +21,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav align-end">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <p class="dropdown-item text-muted small"><%= current_user.email %></p>
-              <%= link_to "Favorites", favorites_path, class: "dropdown-item" %>
-              <%= link_to "Edit preferences", edit_user_cuisines_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
+          <li><%= link_to "About Us", about_us_path, class: "dropdown-item dishy-menu" %></li>
+          <li><%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item dishy-menu" %></li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

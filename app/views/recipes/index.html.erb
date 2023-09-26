@@ -11,14 +11,14 @@
           <p><%= "#{recipe.time} mins" %></p>
           <p><%= "#{recipe.ingredients.count} ingredients" %></p>
         </div>
-        <div class="align-items-end">
+        <div class="align-items-end details">
           <div class="hand">
             <div class="swipe">
               <div class="path"></div>
               <div class="hand-icon"></div>
             </div>
           </div>
-          <%= link_to "See more details", recipe_path(recipe), class: "swiper--more--details"  %>
+          <%= link_to "See more details", recipe_path(recipe) %>
         </div>
       </div>
     <% end %>
