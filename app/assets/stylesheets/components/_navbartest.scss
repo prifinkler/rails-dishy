@@ -1,0 +1,45 @@
+.navbar {
+  --bs-navbar-padding-y: 0.1rem;
+}
+
+.navbar-dishy {
+  z-index: 999;
+  overflow: hidden;
+  // background-color: rgba(0,0,0,1);
+  background-color: #201b26;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.navbar-dishy .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-dishy .navbar-brand img {
+  width: 40px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+.edit-pref {
+  font-size: 30px;
+  opacity: 0.5;
+  color: $white;
+}
+
+.dishy-menu {
+  font-size: 16px;
+  opacity: 0.5;
+  color: $white;
+  align-items: right;
+}
+
+.navbar ul {
+  align-items: center;
+}
+
+.navbar ul > li {
+  margin-bottom: 8px;
+}

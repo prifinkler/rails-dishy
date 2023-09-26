@@ -1,10 +1,9 @@
 <div class="container show py-4 pb-20" style="background-image: linear-gradient(transparent 0%, transparent 25vh, black 45vh), url('<%= asset_path(@recipe.photo_url) %>');">
   <div class="container recipe-card py-4">
-  <h3><%= @recipe.name%></h3>
+  <h1><%= @recipe.name%></h1>
     <%# <% if session[:last_viewed_recipe_id].present? %>
       <%# <%= button_tag "Back to Last Recipe", id: "back-to-last-recipe", "data-last-viewed-recipe-id": session[:last_viewed_recipe_id] %>
     <%# <% end %>
-    <%= link_to "Back to recipes", recipes_path, method: :get, class: "button-9" %>
     <p><strong><%= @recipe.description %></strong></p>
     <h5>Time: <%= "#{@recipe.time} mins" %></h5>
     <h5>Ingredients</h5>
@@ -20,15 +19,22 @@
       <% end %>
     </ul>
     <h5>Dietary Restrictions</h5>
-    <ul>
+    <ul >
       <% @recipe.dietaries.each do |dietary| %>
           <li><%= dietary.dietary_type %></li>
       <% end %>
     </ul>
     <h5>Instructions</h5>
-    <p><%= @recipe.instruction%></p>
+    <ul>
+      <% @recipe.instruction.each_line do |line| %>
+        <li><%= line.strip %></li>
+      <% end %>
+    </ul>
+    <div style="margin: 30px 0;">
+      <%= link_to "Back to recipes", recipes_path, method: :get, class: "button-9" %>
+    </div>
+  </div>
   <%= render "shared/navbar" %>
-</div>
 
 <%# <script>
 document.addEventListener('DOMContentLoaded', function () {

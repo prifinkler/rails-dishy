@@ -2,12 +2,13 @@
   <div class="container container-hm">
     <div class="row text-center align-middle word">
       <%# <h2>Missing something?</h2> %>
+      <h1 class="neon" data-text="U">DI<span class="flicker-slow">S</span>H<span class="flicker-fast">Y</span></h1>
     </div>
     <div class="row align-middle">
     <%= link_to "Fill me up", edit_user_cuisines_path, class: "button-8" %>
   </div>
 </div>
-
+<%#
 <script>
 var words = ['Missing something?', 'Let us get to know each other.', 'Get steamy in the kitchen with our saucy recipe matches.', 'Swipe right to love.'],
     part,
@@ -16,8 +17,8 @@ var words = ['Missing something?', 'Let us get to know each other.', 'Get steamy
     len = words.length,
     forwards = true,
     skip_count = 0,
-    skip_delay = 35,
-    speed = 120;
+    skip_delay = 30,
+    speed = 80;
 var wordflick = function () {
   setInterval(function () {
     if (forwards) {
@@ -56,4 +57,4 @@ $(document).ready(function () {
   wordflick();
 });
 
-</script>
+</script> %>
