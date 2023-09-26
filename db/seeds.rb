@@ -712,7 +712,7 @@ african_roasted_vegetables = Recipe.create!(
   name: 'African Roasted Vegetables',
   description: 'A flavorful dish with roasted eggplant, zucchini, tomatoes, and onions.',
   time: 40,
-  photo_url: 'seed/african_roasted_vegetables.jpg',
+  photo_url: 'seed/African_roasted_vegetables.jpg',
   instruction: '1. Preheat the oven to 400°F (200°C).
                 2. Toss eggplant, zucchini, tomatoes, and onions with olive oil, salt, pepper, and dried oregano.
                 3. Roast in the oven until vegetables are tender and slightly caramelized.
@@ -945,7 +945,7 @@ mediterranean_aubergine_salad = Recipe.create!(
   name: 'Mediterranean Aubergine Salad',
   description: 'A refreshing salad with grilled Aubergine, cherry tomatoes, and feta cheese.',
   time: 30,
-  photo_url: 'seed/mediterranean_aubergine_salad.jpg',
+  photo_url: 'seed/mediterranean_Aubergine_salad.jpg',
   instruction: '1. Grill Aubergine slices until tender and slightly charred.
                 2. Combine grilled Aubergine, cherry tomatoes, red onion, and feta cheese.
                 3. Drizzle with olive oil and balsamic vinegar.
@@ -1209,7 +1209,7 @@ spicy_mediterranean_aubergine_dip = Recipe.create!(
   name: 'Spicy Mediterranean Aubergine Dip',
   description: 'A spicy and savory Mediterranean Aubergine dip.',
   time: 45,
-  photo_url: 'seed/spicy_mediterranean_aubergine_dip.jpg',
+  photo_url: 'seed/spicy_mediterranean_Aubergine_dip.jpg',
   instruction: '1. Roast Aubergine until tender and charred.
                 2. Blend with tahini, lemon juice, garlic, cumin, and red pepper flakes.
                 3. Drizzle with olive oil and serve with pita bread.'
