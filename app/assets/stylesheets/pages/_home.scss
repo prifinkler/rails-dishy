@@ -37,6 +37,13 @@
   z-index: 999;
 }
 
+.home-logo img {
+  width: 40px;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
 .flicker-slow{
   animation: flicker 3s linear infinite;
 }

@@ -4,6 +4,14 @@
   color: $white;
 }
 
+.recipe-card h1, .recipe-card h5 {
+  color: #ca4091;
+}
+
+.recipe-card p, .recipe-card ul {
+  color: #F8D5FC;
+}
+
 .show {
   background-size: contain;
   background-position: top center;
