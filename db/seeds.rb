@@ -26,7 +26,6 @@ Ingredient.destroy_all
 puts "Database cleaned"
 
 dietaries = [
-  { dietary_type: 'None' },
   { dietary_type: 'Vegan' },
   { dietary_type: 'Vegetarian' },
   { dietary_type: 'Pescatarian' },
@@ -51,7 +50,6 @@ end
 puts "Dietary types created!"
 
 cuisines = [
-  { name: 'All' },
   { name: 'African' },
   { name: 'American' },
   { name: 'Brazilian' },
@@ -132,7 +130,6 @@ ingredients = [
   { name: 'Hamburger buns' },
   { name: 'Hot vegetable stock' },
   { name: 'Kalamata olives' },
-  { name: 'Lemon juice' },
   { name: 'Lemon thyme leaves' },
   { name: 'Lemon wedges' },
   { name: 'Lemon Zest' },
