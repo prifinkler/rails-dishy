@@ -130,7 +130,6 @@ ingredients = [
   { name: 'Hamburger buns' },
   { name: 'Hot vegetable stock' },
   { name: 'Kalamata olives' },
-  { name: 'Lemon juice' },
   { name: 'Lemon thyme leaves' },
   { name: 'Lemon wedges' },
   { name: 'Lemon Zest' },
