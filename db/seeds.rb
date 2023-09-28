@@ -192,8 +192,7 @@ ingredients = [
   { name: 'Zucchini' },
   { name: "Chicken thighs"},
   { name: "Mint leaves"},
-  { name: "Rose Harissa"},
-  { name: "Za'atar" }
+  { name: "Rose Harissa"}
 ]
 
 ingredients.each do |ingredient|
