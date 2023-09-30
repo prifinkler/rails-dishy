@@ -253,8 +253,9 @@ margarita_pizza.ingredients << Ingredient.find_or_create_by(name: "Salt")
 margarita_pizza.ingredients << Ingredient.find_or_create_by(name: "Black pepper")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Italian")
+Recipe.last.cuisines << Cuisine.find_by(name: "All")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 2
 stir_fried_chicken_with_broccoli = Recipe.create!(
@@ -280,7 +281,9 @@ stir_fried_chicken_with_broccoli.ingredients << Ingredient.find_or_create_by(nam
 stir_fried_chicken_with_broccoli.ingredients << Ingredient.find_or_create_by(name: "Oil")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Chinese")
+Recipe.last.cuisines << Cuisine.find_by(name: "All")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Low-carb")
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 3
 vegetable_curry = Recipe.create!(
@@ -338,7 +341,7 @@ sushi_rolls.ingredients << Ingredient.find_or_create_by(name: "Pickled ginger")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Japanese")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 5
 ratatouille = Recipe.create!(
@@ -367,7 +370,7 @@ ratatouille.ingredients << Ingredient.find_or_create_by(name: "Thyme")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "French")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 6
 greek_salad = Recipe.create!(
@@ -394,7 +397,7 @@ greek_salad.ingredients << Ingredient.find_or_create_by(name: "Black pepper")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Greek")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 7
 pad_thai = Recipe.create!(
@@ -428,7 +431,7 @@ pad_thai.ingredients << Ingredient.find_or_create_by(name: "Cilantro")
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Thai")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 8
 spanish_paella = Recipe.create!(
@@ -463,7 +466,7 @@ spanish_paella.ingredients << Ingredient.find_or_create_by(name: "Fresh parsley"
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Spanish")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Lactose intolerant")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 9
 bbq_pulled_pork_sandwich = Recipe.create!(
@@ -488,7 +491,7 @@ bbq_pulled_pork_sandwich.ingredients << Ingredient.find_or_create_by(name: "Hamb
 
 Recipe.last.cuisines << Cuisine.find_by(name: "American")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Lactose intolerant")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 10
 vegetable_sushi_bowl = Recipe.create!(
@@ -516,7 +519,7 @@ vegetable_sushi_bowl.ingredients << Ingredient.find_or_create_by(name: "Pickled 
 
 Recipe.last.cuisines << Cuisine.find_by(name: "Japanese")
 Recipe.last.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
-
+Recipe.last.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 11
 aubergine_with_black_garlic_recipe = Recipe.create!(
@@ -555,6 +558,7 @@ aubergine_with_black_garlic_recipe.ingredients << Ingredient.find_or_create_by(n
 
 Recipe.last.cuisines << Cuisine.find_or_create_by(name: "Mediterranean")
 Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "Vegetarian")
+Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "None")
 
 # Recipe 12
 pappardelle_recipe = Recipe.create!(
@@ -587,7 +591,7 @@ pappardelle_recipe.ingredients << Ingredient.find_or_create_by(name: "Salt")
 
 Recipe.last.cuisines << Cuisine.find_or_create_by(name: "Italian")
 Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "Vegetarian")
-
+Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "None")
 
 # Recipe 13
 koftas_recipe = Recipe.create!(
@@ -624,7 +628,7 @@ koftas_recipe.ingredients << Ingredient.find_or_create_by(name: "Ground cumin")
 
 Recipe.last.cuisines << Cuisine.find_or_create_by(name: "Greek")
 Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "Poultry")
-
+Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "None")
 
 # Recipe 14
 jollof_rice_recipe = Recipe.create!(
@@ -667,7 +671,7 @@ Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "Dairy-Free")
 Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "Gluten-Free")
 Recipe.last.dietaries << Dietary.find_or_create_by(dietary_type: "Vegan")
 Recipe.last.cuisines << Cuisine.find_or_create_by(name: "African")
-
+Recipe.last.cuisines << Cuisine.find_or_create_by(name: "All")
 
 # Recipe 15
 scully_pork_belly = Recipe.create!(
@@ -697,7 +701,7 @@ scully_pork_belly.ingredients << Ingredient.find_or_create_by(name: "Coarse sea 
 # Create cuisines and dietaries
 scully_pork_belly.cuisines << Cuisine.find_or_create_by(name: "American") # You can change this to the appropriate cuisine
 scully_pork_belly.dietaries << Dietary.find_or_create_by(dietary_type: "High-protein")
-
+scully_pork_belly.dietaries << Dietary.find_or_create_by(dietary_type: "None")
 
 # Recipe 16
 african_roasted_vegetables = Recipe.create!(
@@ -724,6 +728,7 @@ african_roasted_vegetables.ingredients << Ingredient.find_or_create_by(name: "Ex
 
 african_roasted_vegetables.cuisines << Cuisine.find_by(name: "African")
 african_roasted_vegetables.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+african_roasted_vegetables.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 17
 shrimp_pad_thai = Recipe.create!(
@@ -754,6 +759,7 @@ shrimp_pad_thai.ingredients << Ingredient.find_or_create_by(name: "Cilantro")
 
 shrimp_pad_thai.cuisines << Cuisine.find_by(name: "Thai")
 shrimp_pad_thai.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+shrimp_pad_thai.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 18
 chicken_and_rice_pilaf = Recipe.create!(
@@ -783,6 +789,7 @@ chicken_and_rice_pilaf.ingredients << Ingredient.find_or_create_by(name: "Flat-l
 
 chicken_and_rice_pilaf.cuisines << Cuisine.find_by(name: "Mediterranean")
 chicken_and_rice_pilaf.dietaries << Dietary.find_by(dietary_type: "Halal")
+chicken_and_rice_pilaf.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 19
 vegetable_stir_fry = Recipe.create!(
@@ -809,6 +816,7 @@ vegetable_stir_fry.ingredients << Ingredient.find_or_create_by(name: "Rice")
 
 vegetable_stir_fry.cuisines << Cuisine.find_by(name: "Chinese")
 vegetable_stir_fry.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+vegetable_stir_fry.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 20
 shrimp_scampi = Recipe.create!(
@@ -834,6 +842,7 @@ shrimp_scampi.ingredients << Ingredient.find_or_create_by(name: "Pepper")
 
 shrimp_scampi.cuisines << Cuisine.find_by(name: "Italian")
 shrimp_scampi.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+shrimp_scampi.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 21
 cabbage_carrot_slaw = Recipe.create!(
@@ -856,6 +865,7 @@ cabbage_carrot_slaw.ingredients << Ingredient.find_or_create_by(name: "Mustard")
 
 cabbage_carrot_slaw.cuisines << Cuisine.find_by(name: "American")
 cabbage_carrot_slaw.dietaries << Dietary.find_by(dietary_type: "Gluten-free")
+cabbage_carrot_slaw.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 22
 minty_yogurt_sauce = Recipe.create!(
@@ -876,6 +886,7 @@ minty_yogurt_sauce.ingredients << Ingredient.find_or_create_by(name: "Pepper")
 
 minty_yogurt_sauce.cuisines << Cuisine.find_by(name: "Mediterranean")
 minty_yogurt_sauce.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+minty_yogurt_sauce.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 23
 coffee_rubbed_pork = Recipe.create!(
@@ -899,6 +910,7 @@ coffee_rubbed_pork.ingredients << Ingredient.find_or_create_by(name: "Black garl
 
 coffee_rubbed_pork.cuisines << Cuisine.find_by(name: "American")
 coffee_rubbed_pork.dietaries << Dietary.find_by(dietary_type: "Low-carb")
+coffee_rubbed_pork.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 24
 japanese_sushi_bowl = Recipe.create!(
@@ -922,6 +934,7 @@ japanese_sushi_bowl.ingredients << Ingredient.find_or_create_by(name: "Sesame se
 
 japanese_sushi_bowl.cuisines << Cuisine.find_by(name: "Japanese")
 japanese_sushi_bowl.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+japanese_sushi_bowl.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 25
 mediterranean_aubergine_salad = Recipe.create!(
@@ -947,6 +960,7 @@ mediterranean_aubergine_salad.ingredients << Ingredient.find_or_create_by(name: 
 
 mediterranean_aubergine_salad.cuisines << Cuisine.find_by(name: "Mediterranean")
 mediterranean_aubergine_salad.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+mediterranean_aubergine_salad.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 26
 thai_basil_shrimp = Recipe.create!(
@@ -972,6 +986,7 @@ thai_basil_shrimp.ingredients << Ingredient.find_or_create_by(name: "Rice")
 
 thai_basil_shrimp.cuisines << Cuisine.find_by(name: "Thai")
 thai_basil_shrimp.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+thai_basil_shrimp.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 27
 indian_butter_chicken = Recipe.create!(
@@ -996,6 +1011,7 @@ indian_butter_chicken.ingredients << Ingredient.find_or_create_by(name: "Rice")
 
 indian_butter_chicken.cuisines << Cuisine.find_by(name: "Indian")
 indian_butter_chicken.dietaries << Dietary.find_by(dietary_type: "Low-carb")
+indian_butter_chicken.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 28
 mediterranean_roasted_vegetables = Recipe.create!(
@@ -1018,6 +1034,7 @@ mediterranean_roasted_vegetables.ingredients << Ingredient.find_or_create_by(nam
 
 mediterranean_roasted_vegetables.cuisines << Cuisine.find_by(name: "Mediterranean")
 mediterranean_roasted_vegetables.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+mediterranean_roasted_vegetables.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 29
 mediterranean_grilled_chicken = Recipe.create!(
@@ -1041,6 +1058,7 @@ mediterranean_grilled_chicken.ingredients << Ingredient.find_or_create_by(name: 
 
 mediterranean_grilled_chicken.cuisines << Cuisine.find_by(name: "Mediterranean")
 mediterranean_grilled_chicken.dietaries << Dietary.find_by(dietary_type: "High-protein")
+mediterranean_grilled_chicken.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 30
 japanese_teriyaki_tofu = Recipe.create!(
@@ -1063,6 +1081,7 @@ japanese_teriyaki_tofu.ingredients << Ingredient.find_or_create_by(name: "Green 
 
 japanese_teriyaki_tofu.cuisines << Cuisine.find_by(name: "Japanese")
 japanese_teriyaki_tofu.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+japanese_teriyaki_tofu.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 31
 italian_salad = Recipe.create!(
@@ -1088,6 +1107,7 @@ italian_salad.ingredients << Ingredient.find_or_create_by(name: "Pepper")
 
 italian_salad.cuisines << Cuisine.find_by(name: "Italian")
 italian_salad.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+italian_salad.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 32
 thai_red_curry_shrimp = Recipe.create!(
@@ -1113,6 +1133,7 @@ thai_red_curry_shrimp.ingredients << Ingredient.find_or_create_by(name: "Rice")
 
 thai_red_curry_shrimp.cuisines << Cuisine.find_by(name: "Thai")
 thai_red_curry_shrimp.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+thai_red_curry_shrimp.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 33
 barbecue_pulled_pork_sliders = Recipe.create!(
@@ -1134,6 +1155,7 @@ barbecue_pulled_pork_sliders.ingredients << Ingredient.find_or_create_by(name: "
 
 barbecue_pulled_pork_sliders.cuisines << Cuisine.find_by(name: "American")
 barbecue_pulled_pork_sliders.dietaries << Dietary.find_by(dietary_type: "High-protein")
+barbecue_pulled_pork_sliders.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 34
 sushi_rice_bowl_avocado = Recipe.create!(
@@ -1153,6 +1175,7 @@ sushi_rice_bowl_avocado.ingredients << Ingredient.find_or_create_by(name: "Sesam
 
 sushi_rice_bowl_avocado.cuisines << Cuisine.find_by(name: "Japanese")
 sushi_rice_bowl_avocado.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+sushi_rice_bowl_avocado.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 35
 minty_greek_tzatziki_sauce = Recipe.create!(
@@ -1175,6 +1198,7 @@ minty_greek_tzatziki_sauce.ingredients << Ingredient.find_or_create_by(name: "Pe
 
 minty_greek_tzatziki_sauce.cuisines << Cuisine.find_by(name: "Greek")
 minty_greek_tzatziki_sauce.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+minty_greek_tzatziki_sauce.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 36
 spicy_mediterranean_aubergine_dip = Recipe.create!(
@@ -1198,6 +1222,7 @@ spicy_mediterranean_aubergine_dip.ingredients << Ingredient.find_or_create_by(na
 
 spicy_mediterranean_aubergine_dip.cuisines << Cuisine.find_by(name: "Mediterranean")
 spicy_mediterranean_aubergine_dip.dietaries << Dietary.find_by(dietary_type: "Vegan")
+spicy_mediterranean_aubergine_dip.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 37
 garlic_herb_mashed_potatoes = Recipe.create!(
@@ -1220,6 +1245,7 @@ garlic_herb_mashed_potatoes.ingredients << Ingredient.find_or_create_by(name: "P
 
 garlic_herb_mashed_potatoes.cuisines << Cuisine.find_by(name: "American")
 garlic_herb_mashed_potatoes.dietaries << Dietary.find_by(dietary_type: "Vegetarian")
+garlic_herb_mashed_potatoes.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 38
 sesame_crusted_tuna_steak = Recipe.create!(
@@ -1239,6 +1265,7 @@ sesame_crusted_tuna_steak.ingredients << Ingredient.find_or_create_by(name: "Ste
 
 sesame_crusted_tuna_steak.cuisines << Cuisine.find_by(name: "Japanese")
 sesame_crusted_tuna_steak.dietaries << Dietary.find_by(dietary_type: "Pescatarian")
+sesame_crusted_tuna_steak.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 39
 lamb_pistachio_patties = Recipe.create!(
@@ -1270,6 +1297,7 @@ lamb_pistachio_patties.ingredients << Ingredient.find_or_create_by(name: 'Salt')
 lamb_pistachio_patties.ingredients << Ingredient.find_or_create_by(name: 'Black pepper')
 
 lamb_pistachio_patties.cuisines << Cuisine.find_by(name: "Middle Eastern")
+lamb_pistachio_patties.dietaries << Dietary.find_by(dietary_type: "None")
 
 # Recipe 40
 curried_cauliflower_pie = Recipe.create!(
@@ -1303,6 +1331,7 @@ curried_cauliflower_pie.ingredients << Ingredient.find_or_create_by(name: 'Black
 curried_cauliflower_pie.ingredients << Ingredient.find_or_create_by(name: 'Parsley')
 curried_cauliflower_pie.ingredients << Ingredient.find_or_create_by(name: 'Lemon Zest')
 
+curried_cauliflower_pie.dietaries << Dietary.find_or_create_by(dietary_type: 'None')
 curried_cauliflower_pie.dietaries << Dietary.find_or_create_by(dietary_type: 'Vegetarian')
 curried_cauliflower_pie.cuisines << Cuisine.find_or_create_by(name: 'Middle Eastern')
 
@@ -1338,6 +1367,7 @@ aubergine_with_buttermilk_sauce.ingredients << Ingredient.find_or_create_by(name
 aubergine_with_buttermilk_sauce.ingredients << Ingredient.find_or_create_by(name: 'Garlic clove')
 aubergine_with_buttermilk_sauce.ingredients << Ingredient.find_or_create_by(name: 'Salt')
 
+aubergine_with_buttermilk_sauce.dietaries << Dietary.find_or_create_by(dietary_type: 'None')
 aubergine_with_buttermilk_sauce.dietaries << Dietary.find_or_create_by(dietary_type: 'Vegetarian')
 aubergine_with_buttermilk_sauce.cuisines << Cuisine.find_or_create_by(name: 'Middle Eastern')
 
@@ -1374,6 +1404,7 @@ spicy_mushroom_lasagne.ingredients << Ingredient.find_or_create_by(name: 'Basil 
 spicy_mushroom_lasagne.ingredients << Ingredient.find_or_create_by(name: 'Parsley leaves')
 
 spicy_mushroom_lasagne.dietaries << Dietary.find_or_create_by(dietary_type: 'Vegetarian')
+spicy_mushroom_lasagne.dietaries << Dietary.find_or_create_by(dietary_type: 'None')
 spicy_mushroom_lasagne.cuisines << Cuisine.find_or_create_by(name: 'Middle Eastern')
 spicy_mushroom_lasagne.cuisines << Cuisine.find_or_create_by(name: 'Italian')
 
@@ -1405,6 +1436,7 @@ puy_lentil_aubergine_stew.ingredients << Ingredient.find_or_create_by(name: 'Sal
 puy_lentil_aubergine_stew.ingredients << Ingredient.find_or_create_by(name: 'Black pepper')
 
 puy_lentil_aubergine_stew.dietaries << Dietary.find_or_create_by(dietary_type: 'Vegetarian')
+puy_lentil_aubergine_stew.dietaries << Dietary.find_or_create_by(dietary_type: 'None')
 puy_lentil_aubergine_stew.cuisines << Cuisine.find_or_create_by(name: 'Mediterranean')
 puy_lentil_aubergine_stew.cuisines << Cuisine.find_or_create_by(name: 'Middle Eastern')
 
