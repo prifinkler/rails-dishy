@@ -41,7 +41,9 @@ dietaries = [
   { dietary_type: 'Halal' },
   { dietary_type: 'Kosher' },
   { dietary_type: 'Whole30' },
-  { dietary_type: 'No added sugar' }
+  { dietary_type: 'No added sugar' },
+  { dietary_type: 'None' }
+
 ]
 
 dietaries.each do |dietary|
@@ -66,7 +68,8 @@ cuisines = [
   { name: 'Middle Eastern' },
   { name: 'Spanish' },
   { name: 'Thai' },
-  { name: 'Vietnamese' }
+  { name: 'Vietnamese' },
+  { name: 'All' }
 ]
 
 cuisines.each do |cuisine|
