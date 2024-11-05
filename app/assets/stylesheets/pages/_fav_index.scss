@@ -1,49 +1,32 @@
-.favebg {
-  // background-image:  linear-gradient(rgba(0,0,0, 0) 0%, rgba(0,0,0, 1) 75%), url("Flour.jpg");
-  background-size: auto;
-  color: $white;
-  border: none;
-  background-color: $gray;
-  width: 100%;
+.fave-container {
   height: 100%;
-}
-
-.container-fv {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 50px;
-  min-height: 100vh;
-}
-
-.card-fv {
-  display: flex;
-  flex-direction: column;
-  width: 95vw;
-  padding: 10px;
-  border-radius: 8px;
-  overflow: hidden;
-  // background-size: contain;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-.cards-fv {
-  flex-grow: 1;
+  color: $white;
+  background-color: $gray;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  grid-template-columns: 1fr;
-  gap: 25px;
+  padding: 1em;
 }
 
+.fave-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
 
-// @media (min-width: 100px) and (max-width: 575px) {
-//   .cards {
-//     grid-template-columns: 1fr;
-//   }
-// }
+.fave-card {
+  padding: 0.75em;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.back-link {
+  display: block;
+  margin-bottom: 3em;
+  color: $white;
+  text-decoration: none;
+
+  &:hover {
+    color: darken($white, 10%);
+  }
+}

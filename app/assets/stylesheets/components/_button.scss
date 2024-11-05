@@ -1,35 +1,14 @@
-.button-8 {
+.main-btn {
   background-color: $primary;
-  border-radius: 50px;
+  color: $white;
   border: 1px solid $red;
   box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: $white;
-  cursor: pointer;
-  // display: inline-block;
-  margin: 10;
   outline: none;
-  padding: 8px .8em;
-  position: relative;
   text-align: center;
-  text-decoration: none;
-  padding: 8px 50px;
+  border-radius: 30px;
+  padding: 0.5em 2em;
 }
 
-.button-9 {
-  background-color: $primary;
-  border-radius: 30px;
-  border: 1px solid $red;
-  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
-  box-sizing: border-box;
-  color: $white;
-  cursor: pointer;
-  // display: inline-block;
-  margin: 10;
-  outline: none;
-  padding: 8px .8em;
-  position: relative;
-  text-align: center;
+a {
   text-decoration: none;
-  // padding: 8px 50px;
 }

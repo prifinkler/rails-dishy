@@ -1,11 +1,15 @@
-<div class="swiper">
+<div class="swiper" data-controller="swiper">
   <div class="swiper--status">
-    <i id="nope" class="fa fa-remove"></i>
-    <i id="love" class="fa fa-heart"></i>
+    <i id="nope" class="fa fa-remove" data-swiper-target="nope"></i>
+    <i id="love" class="fa fa-heart" data-swiper-target="love"></i>
   </div>
+
   <div class="swiper--cards">
     <% @recipes.each do |recipe| %>
-      <div class="swiper--card swiper--buttons d-flex flex-column" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover; padding-bottom:80px;" data-recipe-id="<%= recipe.id %>">
+      <div class="swiper--card swiper--buttons d-flex flex-column"
+          style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover; padding-bottom:80px;"
+          data-recipe-id="<%= recipe.id %>"
+          data-swiper-target="card">
         <div class="align-items-start mb-auto">
           <h1><%= recipe.name %></h1>
           <p><%= "#{recipe.time} mins" %></p>
@@ -14,8 +18,8 @@
         <div class="align-items-end details">
           <div class="hand">
             <div class="swipe">
-              <div class="path"></div>
-              <div class="hand-icon"></div>
+              <div class="path" data-swiper-target="path"></div>
+              <div class="hand-icon" data-swiper-target="handIcon"></div>
             </div>
           </div>
           <%= link_to "See more details", recipe_path(recipe) %>
@@ -24,5 +28,5 @@
     <% end %>
   </div>
 </div>
+
 <%= render "shared/navbar" %>
-<%= render "shared/swiper" %>

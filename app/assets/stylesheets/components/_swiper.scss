@@ -1,11 +1,5 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
 .swiper {
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -14,7 +8,7 @@
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
   color: $white;
-  margin-bottom: 20%;
+  background-color: $white;
 }
 
 .swiper a {
@@ -64,7 +58,7 @@
   justify-content: center;
   align-items: flex-end;
   z-index: 1;
-  margin-bottom: 60px;
+  margin-bottom: 4.75em;
 }
 
 .swiper--card {
@@ -121,7 +115,6 @@
   border-radius: 40px;
   visibility: hidden;
   left: 53%;
-  top: 65%;
 }
 
 .hand-icon {

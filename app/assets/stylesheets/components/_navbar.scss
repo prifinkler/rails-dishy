@@ -1,46 +1,47 @@
-.navbar {
-  --bs-navbar-padding-y: 0.1rem;
-}
-
 .navbar-dishy {
   z-index: 999;
-  overflow: hidden;
-  background-color: rgba(0,0,0,0.7);
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  max-width: 95%;
+  background-color: #201b26;
+  max-width: 430px;
+  width: 100%;
   margin: 0 auto;
-}
+  min-height: 3.5em;
+  padding: 0.5rem 1rem;
 
-.navbar-dishy .navbar-collapse {
-  flex-grow: 0;
-}
+  .container-fluid {
+    padding: 0;
+  }
 
-.navbar-dishy .navbar-brand img {
-  width: 40px;
+  .navbar-brand {
+    padding: 0;
+    margin: 0;
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+  }
+
+  .nav-edit-pref {
+    font-size: 30px;
+    opacity: 0.5;
+    color: $white;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .navbar-toggler {
   border: none;
+  padding: 0;
+  &:focus {
+    box-shadow: none;
+  }
 }
 
-.edit-pref {
-  font-size: 30px;
-  opacity: 0.5;
-  color: $white;
-}
-
-.dishy-menu {
-  font-size: 16px;
-  opacity: 0.5;
-  color: $white;
-  align-items: right;
-}
-
-.navbar ul {
-  align-items: center;
-}
-
-.navbar ul > li {
-  margin-bottom: 8px;
+.nav-link {
+  text-align: right;
 }

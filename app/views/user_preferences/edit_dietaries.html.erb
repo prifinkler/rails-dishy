@@ -1,5 +1,5 @@
-<div class="container py-4 edit-pref-bg">
-  <div class="edit-pref-center">
+<div class="container edit-pref">
+  <div>
       <h2>Any dietary requirements?</h2>
       <%= simple_form_for(@user, url: update_user_dietaries_path, method: :patch) do |f| %>
         <%= f.association :dietaries, collection: Dietary.all,
@@ -9,8 +9,8 @@
                           label_method: :dietary_type,
                           value_method: :id,
                           legend_tag: false %>
-        <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "button-9" %>
-        <%= f.submit "Save", class: "button-9", style: "padding: 8px 20px;"  %>
+        <%= link_to "Previous", edit_user_cuisines_path, method: :get, class: "main-btn" %>
+        <%= f.submit "Save", class: "main-btn" %>
       <% end %>
   </div>
 </div>

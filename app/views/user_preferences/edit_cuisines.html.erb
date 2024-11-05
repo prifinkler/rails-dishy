@@ -1,5 +1,5 @@
-<div class="container py-4 edit-pref-bg">
-  <div class="edit-pref-center">
+<div class="container edit-pref">
+  <div>
     <h2>Cuisines</h2>
     <%= simple_form_for(@user, url: update_user_cuisines_path, method: :patch) do |f| %>
       <%= f.association :cuisines, collection: Cuisine.all,
@@ -7,7 +7,7 @@
                         input_html: { class: "tag-selector" },
                         item_wrapper_class: 'tag-item',
                         legend_tag: false %>
-      <%= f.submit "Save", class: "button-9", style: "padding: 8px 20px;" %>
+      <%= f.submit "Save", class: "main-btn"%>
     <% end %>
   </div>
 </div>

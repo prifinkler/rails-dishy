@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: "pages#home"
 
-  get 'about_us', to: 'pages#about_us'
-
   get 'user_preferences/edit_cuisines', to: 'user_preferences#edit_cuisines', as: 'edit_user_cuisines'
   patch 'user_preferences/update_cuisines', to: 'user_preferences#update_cuisines', as: 'update_user_cuisines'
 
