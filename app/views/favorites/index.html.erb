@@ -9,11 +9,19 @@
             style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= asset_path(favorite.photo_url); %>');">
           <h3><%= favorite.name %></h3>
           <p><%= favorite.description %></p>
-          <div class="py-2">
+          <div class="fav-action-btn-group">
             <%= link_to "See recipe", recipe_path(favorite), class: "main-btn see-recipe-btn" %>
+            <%= button_tag data: {
+              action: "favorites#remove",
+              favorite_id: favorite.id,
+              recipe_id: favorite.id
+            } do %>
+            <i class="fa-solid fa-heart liked-btn"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
+
     </div>
     <%= link_to "Back to curated recipes", recipes_path, class: "back-link" %>
   </div>

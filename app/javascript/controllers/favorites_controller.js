@@ -3,13 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["recipe"]
 
-  // connect() {
-  //   console.log("favorites controller connected!")
-  // }
-
   remove(event) {
     event.preventDefault()
-    const favoriteId = event.currentTarget.dataset.favoriteId
+    const favoriteId = event.currentTarget.dataset.recipeId
 
     if (favoriteId) {
       fetch(`/favorites/${favoriteId}`, {
@@ -19,12 +15,12 @@ export default class extends Controller {
         },
       })
       .then(response => {
-        if (response.status === 200) {
-          const recipeElement = this.element.querySelector(`.card-fv[data-id="${favoriteId}"]`)
+        if (response.ok) {
+          const recipeElement = this.element.querySelector(`.fave-card[data-id="${favoriteId}"]`)
           if (recipeElement) {
             recipeElement.remove()
+            // console.log('removed')
           }
-          // console.log('Recipe removed from favorites!')
         }
       })
       .catch(error => {
