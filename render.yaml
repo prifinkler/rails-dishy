@@ -1,9 +1,16 @@
+databases:
+  - name: rails-dishy-postgres
+    databaseName: rails_dishy_production
+    user: rails_dishy
+    plan: free
+
 services:
   - type: web
     name: rails-dishy
-    env: ruby
+    runtime: ruby
+    plan: free
     buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    startCommand: "bundle exec rails server"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -11,9 +18,5 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
-      - key: RAILS_ENV
-        value: production
       - key: WEB_CONCURRENCY
-        value: "2"
-      - key: RAILS_MAX_THREADS
-        value: "5"
+        value: 2
