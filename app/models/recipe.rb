@@ -9,7 +9,7 @@ class Recipe < ApplicationRecord
   has_many :dietaries, through: :recipe_dietaries
 
   include PgSearch::Model
-  pg_search_scope :search_by_name_and_time, against: %i[name time], using: { tsearch: { prefix: true }}
+  pg_search_scope :search_by_name_and_time, against: %i[name time], using: { tsearch: { prefix: true } }
   pg_search_scope :search_by_ingredients, associated_against: { ingredients: :name }, using: { tsearch: { prefix: true } }
   pg_search_scope :search_by_cuisines, associated_against: { cuisines: :name }, using: { tsearch: { prefix: true } }
 
