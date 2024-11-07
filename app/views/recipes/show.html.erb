@@ -1,34 +1,89 @@
-<div class="container show py-4 pb-20" style="background-image: linear-gradient(transparent 0%, transparent 25vh, black 45vh), url('<%= asset_path(@recipe.photo_url) %>');">
-  <div class="container recipe-card py-4">
-  <h1><%= @recipe.name%></h1>
-    <p><strong><%= @recipe.description %></strong></p>
-    <h5>Time: <%= "#{@recipe.time} mins" %></h5>
-    <h5>Ingredients</h5>
-    <ul>
-      <% @recipe.ingredients.each do |ingredient| %>
-          <li><%= ingredient.name %></li>
-      <% end %>
-    </ul>
-    <h5>Cuisines</h5>
-    <ul>
-      <% @recipe.cuisines.each do |cuisine| %>
-          <li><%= cuisine.name %></li>
-      <% end %>
-    </ul>
-    <h5>Dietary Restrictions</h5>
-    <ul >
-      <% @recipe.dietaries.each do |dietary| %>
-          <li><%= dietary.dietary_type %></li>
-      <% end %>
-    </ul>
-    <h5>Instructions</h5>
-    <ul>
-      <% @recipe.instruction.each_line do |line| %>
-        <li><%= line.strip %></li>
-      <% end %>
-    </ul>
-    <div style="margin: 30px 0;">
-      <%= link_to "Back to recipes", recipes_path, method: :get, class: "main-btn" %>
-    </div>
+<div class="recipe-show">
+  <div class="recipe-header" style="background-image: url('<%= asset_path(@recipe.photo_url) %>')">
+    <%= link_to :back, class: "back-btn" do %>
+      <i class="fas fa-arrow-left"></i>
+    <% end %>
   </div>
+
+  <div class="recipe-content">
+    <h2><%= @recipe.name%></h2>
+    <p class="recipe-description"><%= @recipe.description %></p>
+
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <i class="far fa-clock"></i>
+        <span><%= @recipe.time %> mins</span>
+      </div>
+    </div>
+
+    <div class="recipe-tabs">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item flex-grow-1 text-center" role="presentation">
+          <%= button_tag type: "button",
+            class: "nav-link active border-0",
+            data: { bs_toggle: "tab", bs_target: "#ingredients" } do %>
+            Ingredients
+          <% end %>
+        </li>
+        <li class="nav-item flex-grow-1 text-center" role="presentation">
+          <%= button_tag type: "button",
+            class: "nav-link border-0",
+            data: { bs_toggle: "tab", bs_target: "#instructions" } do %>
+            Instructions
+          <% end %>
+        </li>
+        <li class="nav-item flex-grow-1 text-center" role="presentation">
+          <%= button_tag type: "button",
+            class: "nav-link border-0",
+            data: { bs_toggle: "tab", bs_target: "#details" } do %>
+            Details
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="ingredients">
+          <div class="ingredients-list">
+            <% @recipe.ingredients.each do |ingredient| %>
+              <div class="ingredient-item">
+                <div class="ingredient-icon">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+                <span><%= ingredient.name %></span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="instructions">
+          <div class="instruction-list">
+            <% @recipe.instruction.split("\n").each do |step| %>
+              <div class="instruction-item">
+                <p><%= step.strip %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="details">
+          <h6 class="mb-2">Cuisines</h6>
+          <div class="recipe-tags">
+            <% @recipe.cuisines.each do |cuisine| %>
+              <span class="tag cuisine"><%= cuisine.name %></span>
+            <% end %>
+          </div>
+
+          <h6 class="mt-4 mb-2">Dietary Restrictions</h6>
+          <div class="recipe-tags">
+            <% @recipe.dietaries.each do |dietary| %>
+              <span class="tag dietary"><%= dietary.dietary_type %></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <%= render "shared/navbar" %>
