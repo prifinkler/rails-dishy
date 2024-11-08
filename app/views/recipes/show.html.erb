@@ -1,6 +1,6 @@
 <div class="recipe-show">
   <div class="recipe-header" style="background-image: url('<%= asset_path(@recipe.photo_url) %>')">
-    <%= link_to :back, class: "back-btn" do %>
+    <%= link_to :back, class: "back-btn", aria: { label: "Return to Last Page" }  do %>
       <i class="fas fa-arrow-left"></i>
     <% end %>
   </div>

@@ -5,15 +5,15 @@
         <%= image_tag "temp_logo.jpg", alt: "Logo" %>
       <% end %>
 
-      <%= link_to edit_user_cuisines_path, class: "nav-edit-pref mx-3" do %>
+      <%= link_to edit_user_cuisines_path, class: "nav-edit-pref mx-3", aria: { label: "Edit preferences" } do %>
         <i class="fa-regular fa-pen-to-square"></i>
       <% end %>
 
-      <%= link_to recipes_path, class: "nav-edit-pref mx-3" do %>
+      <%= link_to recipes_path, class: "nav-edit-pref mx-3", aria: { label: "See Your Recipes" } do %>
         <i class="fa-solid fa-utensils"></i>
       <% end %>
 
-      <%= link_to favorites_path, class: "nav-edit-pref mx-3" do %>
+      <%= link_to favorites_path, class: "nav-edit-pref mx-3", aria: { label: "See Your Favourite Recipes" } do %>
         <i class="fa-regular fa-heart"></i>
       <% end %>
 
