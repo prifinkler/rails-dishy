@@ -1,6 +1,30 @@
-.container-search {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.search-container {
+  margin: 0 auto;
+  width: 100%;
+  padding: 2em 1em 1em;
+}
+
+.custom-search {
+  position: relative;
+}
+.custom-search-input {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 10px 100px 10px 20px;
+  line-height: 1;
+  box-sizing: border-box;
+  outline: none;
+}
+.custom-search-btn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  border: 0;
+  background: $cherry;
+  color: $white;
+  padding: 0 10px;
+  border-radius: 30px;
+  z-index: 2;
 }

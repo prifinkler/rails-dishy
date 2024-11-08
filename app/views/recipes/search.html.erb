@@ -1,46 +1,13 @@
-<div class="container-search pt-4" >
-<%= form_with url: search_recipes_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control me-1",
-          placeholder: "Sushi..."
-        %>
-        <%= submit_tag "Find recipe", class: "btn btn-space" %>
-      <% end %>
-    <%# <div class="input-group search-form">
-      <input type="text" class="search-form form-control" placeholder="Search for recipes" name="q">
-      <button type="submit" class="search-button btn btn-primary">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </button>
-    </div>
-  </form> %>
+<div class="search-container">
+<%= form_with url: search_recipes_path, method: :get, class: "custom-search" do %>
+    <%= text_field_tag :q,
+      params[:q],
+      class: "custom-search-input",
+      placeholder: "e.g. Sushi"
+    %>
+    <%= submit_tag "Search", class: "custom-search-btn" %>
+  <% end %>
 </div>
 
-<div class="swiper">
-  <div class="swiper--status">
-    <i id="nope" class="fa fa-remove"></i>
-    <i id="love" class="fa fa-heart"></i>
-  </div>
-  <div class="swiper--cards">
-    <% @recipes.each do |recipe| %>
-      <div class="swiper--card swiper--buttons d-flex flex-column" style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover; padding-bottom:80px;" data-recipe-id="<%= recipe.id %>">
-        <div class="align-items-start mb-auto">
-          <h1><%= recipe.name %></h1>
-          <p><%= "#{recipe.time} mins" %></p>
-          <p><%= "#{recipe.ingredients.count} ingredients" %></p>
-        </div>
-        <div class="align-items-end">
-          <div class="hand">
-            <div class="swipe">
-              <div class="path"></div>
-              <div class="hand-icon"></div>
-            </div>
-          </div>
-          <%= link_to "See more details", recipe_path(recipe), class: "swiper--more--details" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
-
+<%= render "shared/swiper" %>
 <%= render "shared/navbar" %>
