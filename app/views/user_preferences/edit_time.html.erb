@@ -1,0 +1,25 @@
+<div class="container edit-pref">
+  <div>
+    <h2>Max Cooking Time</h2>
+    <%= simple_form_for @user_time, url: update_user_time_path, method: :patch do |f| %>
+    <fieldset class="form-group">
+      <%= f.collection_radio_buttons :max_cooking_time,
+        [[15, "Quick: 15 minutes or less"],
+        [30, "Medium: 30 minutes or less"],
+        [60, "Relaxed: 60 minutes or less"],
+        [480, "No rush: whatever time it takes"]],
+        :first, :last do |b| %>
+        <div class="tag-item">
+          <%= b.radio_button class: 'tag-selector' %>
+          <%= b.label %>
+        </div>
+      <% end %>
+    </fieldset>
+
+    <div class="button-group">
+      <%= link_to "Previous", edit_user_dietaries_path, method: :get, class: "main-btn" %>
+      <%= f.submit "Continue", class: "main-btn"%>
+    </div>
+    <% end %>
+  </div>
+</div>

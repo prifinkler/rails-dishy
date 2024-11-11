@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   get 'user_preferences/edit_dietaries', to: 'user_preferences#edit_dietaries', as: 'edit_user_dietaries'
   patch 'user_preferences/update_dietaries', to: 'user_preferences#update_dietaries', as: 'update_user_dietaries'
 
+  get 'user_preferences/edit_time', to: 'user_preferences#edit_time', as: 'edit_user_time'
+  patch 'user_preferences/update_time', to: 'user_preferences#update_time', as: 'update_user_time'
+
+
   get 'recipes/search', to: 'recipes#search', as: 'search_recipes'
 
   # Route to show the user's recipes:

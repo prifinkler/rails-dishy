@@ -53,21 +53,16 @@ puts "Dietary types created!"
 cuisines = [
   { name: 'African' },
   { name: 'American' },
-  { name: 'Brazilian' },
-  { name: 'Cajun' },
   { name: 'Chinese' },
   { name: 'French' },
   { name: 'Greek' },
   { name: 'Indian' },
   { name: 'Italian' },
   { name: 'Japanese' },
-  { name: 'Korean' },
   { name: 'Mediterranean' },
-  { name: 'Mexican' },
   { name: 'Middle Eastern' },
   { name: 'Spanish' },
   { name: 'Thai' },
-  { name: 'Vietnamese' },
 ]
 
 cuisines.each do |cuisine|

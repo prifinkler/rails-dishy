@@ -18,6 +18,13 @@ class RecipesController < ApplicationController
         current_user.dietary_ids & recipe.dietary_ids == current_user.dietary_ids
       end
     end
+
+    if current_user.user_time.max_cooking_time.present?
+      @recipes = @recipes.select do |recipe|
+        recipe.time <= current_user.user_time.max_cooking_time
+      end
+    end
+
   end
 
   def toggle_favorite

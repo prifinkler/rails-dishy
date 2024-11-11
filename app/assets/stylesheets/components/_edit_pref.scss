@@ -33,6 +33,11 @@
   border: 1px solid #cdc0e3;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
+
+  &:hover {
+    background-color: #cdc0e3;
+    color: #2c1a2d !important;
+  }
 }
 
 .edit-pref .form-check-input.is-valid ~ .form-check-label {
@@ -42,4 +47,8 @@
 .tag-selector:checked + label {
   background-color: #cdc0e3;
   color: #2c1a2d !important;
+}
+
+.form-group  {
+  margin-bottom: 1rem;
 }
