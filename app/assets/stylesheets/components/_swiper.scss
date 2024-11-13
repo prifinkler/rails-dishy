@@ -1,5 +1,4 @@
 .swiper {
-  // width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -7,12 +6,6 @@
   position: relative;
   opacity: 0;
   transition: opacity 0.1s ease-in-out;
-  color: $white;
-  background-color: $white;
-}
-
-.swiper a {
-  text-decoration: none;
   color: $white;
 }
 
@@ -31,7 +24,7 @@
 }
 
 .swiper--status i {
-  font-size: 100px;
+  font-size: 6.25em;
   opacity: 0;
   transform: scale(0.3);
   transition: all 0.2s ease-in-out;
@@ -52,7 +45,6 @@
 
 .swiper--cards {
   flex-grow: 1;
-  padding-top: 10px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -62,12 +54,11 @@
 }
 
 .swiper--card {
-  display: inline-block;
   width:95%;
   max-width: 400px;
   height: 85%;
-  background: #FFFFFF;
-  padding-bottom: 40px;
+  background-size: cover;
+  padding: 3rem 2rem;
   border-radius: 8px;
   overflow: hidden;
   position: absolute;
@@ -85,21 +76,12 @@
   cursor: grabbing;
 }
 
-.swiper--card h1 {
-  margin-top: 32px;
-  padding: 0 16px;
-  pointer-events: none;
-}
-
-.swiper--card p, .swiper--card a {
-  margin-top: 16px;
-  padding: 0 16px;
-  font-size: 1.25em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.details {
-  margin-bottom: 40px !important;
+.swiper--card {
+  h1, p, a {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1em;
+    color: $white;
+  }
 }
 
 .hand {

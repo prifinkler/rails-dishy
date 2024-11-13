@@ -7,7 +7,7 @@
   <div class="swiper--cards">
     <% @recipes.each do |recipe| %>
       <div class="swiper--card swiper--buttons d-flex flex-column"
-          style="background-image: url('<%= asset_path(recipe.photo_url) %>'); background-size: cover; padding-bottom:80px;"
+          style="background-image: url('<%= asset_path(recipe.photo_url) %>')"
           data-recipe-id="<%= recipe.id %>"
           data-swiper-target="card">
         <div class="align-items-start mb-auto">
