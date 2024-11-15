@@ -1415,7 +1415,6 @@ spicy_mushroom_lasagne.ingredients << Ingredient.find_or_create_by(name: 'Basil 
 spicy_mushroom_lasagne.ingredients << Ingredient.find_or_create_by(name: 'Parsley leaves')
 
 spicy_mushroom_lasagne.dietaries << Dietary.find_or_create_by(dietary_type: 'Vegetarian')
-spicy_mushroom_lasagne.cuisines << Cuisine.find_or_create_by(name: 'Middle Eastern')
 spicy_mushroom_lasagne.cuisines << Cuisine.find_or_create_by(name: 'Italian')
 
 # Recipe 43
@@ -1451,7 +1450,6 @@ puy_lentil_aubergine_stew.ingredients << Ingredient.find_or_create_by(name: 'Sal
 puy_lentil_aubergine_stew.ingredients << Ingredient.find_or_create_by(name: 'Black pepper')
 
 puy_lentil_aubergine_stew.dietaries << Dietary.find_or_create_by(dietary_type: 'Vegetarian')
-puy_lentil_aubergine_stew.cuisines << Cuisine.find_or_create_by(name: 'Mediterranean')
 puy_lentil_aubergine_stew.cuisines << Cuisine.find_or_create_by(name: 'Middle Eastern')
 
 
